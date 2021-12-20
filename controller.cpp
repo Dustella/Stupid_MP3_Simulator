@@ -1,4 +1,5 @@
 #include <iostream>
+#include "controller.h"
 #include "music.cpp"
 #include "musicList.cpp"
 #include "LikeMusicList.cpp"
@@ -34,7 +35,7 @@ using namespace std;
 // 在windows系统下
 #include <io.h>
 
-static void controller::getFiles(string path, vector<string> &files)
+void controller::getFiles(string path, vector<string> &files)
 {
     //文件句柄
     long hFile = 0;
@@ -68,11 +69,10 @@ static void controller::getFiles(string path, vector<string> &files)
 
 void controller::CreateList(string path, string name, musicList *M)
 {
-    M->list_name = name;
-
+    M->setListName(name);
     vector<string> filename;
     getFiles(path, filename);
-    M->music_number = filename.size();
+    M->setListNumber(filename.size());
     for (auto e : filename)
     {
         string music_name;
@@ -187,7 +187,7 @@ int main()
         {
         case '1':
         {
-            cout << "现在系统当中共有歌单" << musicList::List_number() << endl;
+            cout << "现在系统当中共有歌单" << musicList::getListNumber() << endl;
             Print_All_the_List(The_list_of_musicList);
         }
         break;

@@ -12,7 +12,7 @@ class music
     friend class musicList;
     friend bool operator==(music &m1, music &m2); //比较作者和歌曲名
 public:
-    // music(){};
+    // music(){};w
     music(string N, string A, FILE *f = nullptr);
     //  music(string N,string A,string filename);
     // music(string N,string A,string filename,FILE* f=nullptr);
@@ -23,6 +23,7 @@ public:
     string getAuther() const;  // 得到作者名字
     static int Music_number(); // 得到音乐序号
     void liked();              //切换喜欢
+    void setInfo();
     FILE *play();              //得到
     string getPath();          // 返回路径
     bool is_liked();

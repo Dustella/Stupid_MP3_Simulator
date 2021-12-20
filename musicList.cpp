@@ -10,7 +10,6 @@
 #include <set>
 using namespace std;
 
-
 int musicList::list_number = 0;
 musicList::musicList(const musicList &list)
 { //复制歌单
@@ -23,7 +22,7 @@ musicList::musicList(const musicList &list)
     list_number++;
 }
 
-int musicList::List_number()
+int musicList::getListNumber()
 { //显示歌单的函数
     return list_number;
 }
@@ -94,6 +93,16 @@ bool musicList::Add_Music(music M)
     musiclist.push_back(M);
     music_number++;
     return true;
+}
+
+void musicList::setListNumber(int a)
+{
+    list_number = a;
+}
+
+void musicList::setListName(string a)
+{
+    this->list_name = a;
 }
 
 bool musicList::Delete_Music(string music_name)

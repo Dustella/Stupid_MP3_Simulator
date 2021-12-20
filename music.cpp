@@ -1,5 +1,9 @@
 #include "music.h"
 #include <string>
+#include "libzplay.h"
+#include <string.h>
+
+using namespace libZPlay;
 
 int music::number = 0;
 
@@ -20,6 +24,18 @@ music::music(string N, string A, FILE *f) : name(N), author(A), music_file(f)
 // {
 //     number++;
 // }
+void music::setInfo()
+{
+    ZPlay *file = CreateZPlay();
+    const char *location = path.c_str();
+    TID3InfoEx id3_info;
+    if (file->LoadFileID3Ex(location, sfAutodetect, &id3_info, 1))
+    {
+        this->name = id3_info.Title;
+        this->author = id3_info.Artist;
+    }
+}
+
 string music::getName() const
 {
     return name;

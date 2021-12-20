@@ -23,14 +23,16 @@ private:
     string list_name;       //歌单的名字
     static int list_number; //歌单的数量
 public:
+    void setListName(string a);
     vector<music> musiclist; //存放歌曲
+    void static setListNumber(int a); 
     musicList(){};
     musicList(string list_name, vector<music> Mlist);
     musicList(const musicList &list); //复制构造函数
     musicList(vector<music> Mlist);
     string showListName() const;     // 显示播放列表名字
     void PrintMusiclist() /*const*/; //显示这个歌单中所有歌曲的名字
-    int static List_number();        //显示歌单数目的函数
+    int static getListNumber();        //显示歌单数目的函数
     void Reset_ListName(string new_name);
     bool Add_Music(music M);              //增加歌曲
     bool Delete_Music(string music_name); //删除歌曲
