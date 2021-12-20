@@ -9,6 +9,7 @@ class controller
 private:
     /* data */
 public:
+    void controller::selection(char choice, LikeMusicList &LM, vector<Favour_anthor> &set_of_anthor, vector<musicList> &The_list_of_musicList);
     char menu();
     void init(LikeMusicList &LM, vector<Favour_anthor> set_of_anthor, vector<musicList> The_list_of_musicList);
     void welcome();

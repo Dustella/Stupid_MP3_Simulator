@@ -12,27 +12,6 @@
 
 using namespace std;
 
-//在类unix系统下
-// #include <sys/types.h>
-// #include <dirent.h>
-
-// void getFiles(string path, vector<string>& filenames)
-// {
-//     DIR *pDir;
-//     struct dirent* ptr;
-//     if(!(pDir = opendir(path.c_str()))){
-//         cout<<"Folder doesn't Exist!"<<endl;
-//         return;
-//     }
-//     while((ptr = readdir(pDir))!=0) {
-//         if (strcmp(ptr->d_name, ".") != 0 && strcmp(ptr->d_name, "..") != 0){
-//             filenames.push_back(path + "/" + ptr->d_name);
-//         }
-//     }
-//     closedir(pDir);
-// }
-
-// 在windows系统下
 #include <io.h>
 
 void controller::getFiles(string path, vector<string> &files)
@@ -179,6 +158,107 @@ void controller::welcome()
 {
     cout << "=====================欢迎使用音乐管理系统===================" << endl;
 }
+void controller::selection(char choice, LikeMusicList &LM, vector<Favour_anthor> &set_of_anthor, vector<musicList> &The_list_of_musicList)
+{
+    switch (choice)
+    {
+    case '1':
+    {
+        cout << "现在系统当中共有歌单" << musicList::getListNumber() << endl;
+        Print_All_the_List(The_list_of_musicList);
+    }
+    break;
+    case '2':
+    {
+        cout << "请输入您希望进行标记的歌单索引" << endl;
+        int j;
+        cin >> j;
+
+        musicList &M = The_list_of_musicList[j];
+
+        cout << "请输入你喜欢的歌曲,输入-1退出" << endl;
+        int index;
+        while (cin >> index)
+        {
+            if (index == -1)
+                break;
+            M.musiclist[index - 1].is_liked();
+            LM.Add_Music(M.musiclist[index - 1]);
+        }
+    }
+    break;
+    case '3':
+    {
+        if (LM.Music_number_in_this_list() == 0)
+        {
+            cout << "没有喜欢的歌曲" << endl;
+            break;
+        }
+        LM.PrintMusiclist();
+    }
+    break;
+    case '4':
+    {
+        cout << "请输入您希望进行合并的两个歌单的索引" << endl;
+        int i, j;
+        cin >> i >> j;
+        musicList M = The_list_of_musicList[i] + The_list_of_musicList[j];
+
+        cout << "请您数新歌单的名字" << endl;
+        string new_name;
+        cin >> new_name;
+        M.Reset_ListName(new_name);
+
+        The_list_of_musicList.push_back(M);
+        int new_index = The_list_of_musicList.size() - 1;
+        cout << "歌单已经合并成功,新的歌单的索引是" << new_index << endl;
+    }
+    break;
+    case '5':
+    {
+        cout << "请输入您希望进行操作的歌单索引" << endl;
+        int index;
+        cin >> index;
+        while (index >= The_list_of_musicList.size())
+        {
+            cout << "索引过大，请重新输入" << endl;
+            cin >> index;
+        }
+        The_list_of_musicList[index].Operate_the_List();
+    }
+    break;
+    case '6':
+    {
+        LM.Operate_the_List();
+    }
+    break;
+    case '7':
+    {
+        cout << "请输入歌手的名字" << endl;
+        string name;
+        cin >> name;
+        cout << "请输入歌手的性别" << endl;
+        string sex;
+        cin >> sex;
+        cout << "请输入歌手的年龄" << endl;
+        int age;
+        cin >> age;
+        Favour_anthor F(name, sex, age, The_list_of_musicList, LM);
+    }
+    break;
+    case '8':
+    {
+        Operate_The_author(set_of_anthor, The_list_of_musicList, LM);
+    }
+    break;
+    case '9':
+    {
+        cout << "现在程序中一共有歌曲" << music::Music_number() << "首" << endl;
+    }
+    break;
+    }
+}
+
 int main()
 {
     LikeMusicList LM;
@@ -189,103 +269,7 @@ int main()
     char mode = ctl.menu();
     while (mode != "q")
     {
-        switch (mode)
-        {
-        case '1':
-        {
-            cout << "现在系统当中共有歌单" << musicList::getListNumber() << endl;
-            ctl.Print_All_the_List(The_list_of_musicList);
-        }
-        break;
-        case '2':
-        {
-            cout << "请输入您希望进行标记的歌单索引" << endl;
-            int j;
-            cin >> j;
-
-            musicList &M = The_list_of_musicList[j];
-
-            cout << "请输入你喜欢的歌曲,输入-1退出" << endl;
-            int index;
-            while (cin >> index)
-            {
-                if (index == -1)
-                    break;
-                M.musiclist[index - 1].is_liked();
-                LM.Add_Music(M.musiclist[index - 1]);
-            }
-        }
-        break;
-        case '3':
-        {
-            if (LM.Music_number_in_this_list() == 0)
-            {
-                cout << "没有喜欢的歌曲" << endl;
-                break;
-            }
-            LM.PrintMusiclist();
-        }
-        break;
-        case '4':
-        {
-            cout << "请输入您希望进行合并的两个歌单的索引" << endl;
-            int i, j;
-            cin >> i >> j;
-            musicList M = The_list_of_musicList[i] + The_list_of_musicList[j];
-
-            cout << "请您数新歌单的名字" << endl;
-            string new_name;
-            cin >> new_name;
-            M.Reset_ListName(new_name);
-
-            The_list_of_musicList.push_back(M);
-            int new_index = The_list_of_musicList.size() - 1;
-            cout << "歌单已经合并成功,新的歌单的索引是" << new_index << endl;
-        }
-        break;
-        case '5':
-        {
-            cout << "请输入您希望进行操作的歌单索引" << endl;
-            int index;
-            cin >> index;
-            while (index >= The_list_of_musicList.size())
-            {
-                cout << "索引过大，请重新输入" << endl;
-                cin >> index;
-            }
-            The_list_of_musicList[index].Operate_the_List();
-        }
-        break;
-        case '6':
-        {
-            LM.Operate_the_List();
-        }
-        break;
-        case '7':
-        {
-            cout << "请输入歌手的名字" << endl;
-            string name;
-            cin >> name;
-            cout << "请输入歌手的性别" << endl;
-            string sex;
-            cin >> sex;
-            cout << "请输入歌手的年龄" << endl;
-            int age;
-            cin >> age;
-            Favour_anthor F(name, sex, age, The_list_of_musicList, LM);
-        }
-        break;
-        case '8':
-        {
-            Operate_The_author(set_of_anthor, The_list_of_musicList, LM);
-        }
-        break;
-        case '9':
-        {
-            cout << "现在程序中一共有歌曲" << music::Music_number() << "首" << endl;
-        }
-        break;
-        }
+        ctl.selection(mode, LM, set_of_anthor, The_list_of_musicList);
     }
 
     cout << "欢迎再次使用!" << endl;
