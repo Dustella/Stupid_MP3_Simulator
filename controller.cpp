@@ -267,7 +267,7 @@ int main()
     controller ctl;
     // 初始化控制器类
     char mode = ctl.menu();
-    while (mode != "q")
+    while (mode != 'q')
     {
         ctl.selection(mode, LM, set_of_anthor, The_list_of_musicList);
     }
