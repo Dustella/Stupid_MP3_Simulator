@@ -124,19 +124,25 @@ void controller::Print_All_the_List(const vector<musicList> &The_lists)
     }
 }
 
-void controller::init()
+char controller::menu()
 {
+    char f;
+    cout << "查看现有所有歌单具体情况请输入1" << endl;
+    cout << "标记喜欢的歌曲请输入2" << endl;
+    cout << "查看喜欢的歌曲请输入3" << endl;
+    cout << "合并歌单请输入4" << endl;
+    cout << "对于特定歌单进行操作请输入5" << endl;
+    cout << "操作喜欢的歌曲请输入6" << endl;
+    cout << "创建喜欢的歌手请输入7" << endl;
+    cout << "对歌手进行操作输入8" << endl;
+    cout << "查看所有歌曲数目请输入9" << endl;
+    cout << "退出输入'q" << endl;
+    cin >> f;
+    return f;
 }
 
-void controller::welcome()
+void controller::init(LikeMusicList &LM, vector<Favour_anthor> set_of_anthor, vector<musicList> The_list_of_musicList)
 {
-}
-int main()
-{
-    LikeMusicList LM;
-    cout << "=====================欢迎使用音乐管理系统===================" << endl;
-    vector<Favour_anthor> set_of_anthor;
-    vector<musicList> The_list_of_musicList;
     while (1)
     {
 
@@ -167,28 +173,28 @@ int main()
             break;
         }
     }
+}
 
-    char flag;
-    cout << "查看现有所有歌单具体情况请输入1" << endl;
-    cout << "标记喜欢的歌曲请输入2" << endl;
-    cout << "查看喜欢的歌曲请输入3" << endl;
-    cout << "合并歌单请输入4" << endl;
-    cout << "对于特定歌单进行操作请输入5" << endl;
-    cout << "操作喜欢的歌曲请输入6" << endl;
-    cout << "创建喜欢的歌手请输入7" << endl;
-    cout << "对歌手进行操作输入8" << endl;
-    cout << "查看所有歌曲数目请输入9" << endl;
-    cout << "退出输入'q" << endl;
-    while (flag != 'q')
+void controller::welcome()
+{
+    cout << "=====================欢迎使用音乐管理系统===================" << endl;
+}
+int main()
+{
+    LikeMusicList LM;
+    vector<Favour_anthor> set_of_anthor;
+    vector<musicList> The_list_of_musicList;
+    controller ctl;
+    // 初始化控制器类
+    char mode = ctl.menu();
+    while (mode != "q")
     {
-
-        cin >> flag;
-        switch (flag)
+        switch (mode)
         {
         case '1':
         {
             cout << "现在系统当中共有歌单" << musicList::getListNumber() << endl;
-            Print_All_the_List(The_list_of_musicList);
+            ctl.Print_All_the_List(The_list_of_musicList);
         }
         break;
         case '2':
