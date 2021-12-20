@@ -20,11 +20,11 @@ music::music(string N, string A, FILE *f) : name(N), author(A), music_file(f)
 // {
 //     number++;
 // }
-string music::showname() const
+string music::getName() const
 {
     return name;
 }
-string music::showauthor() const
+string music::getAuther() const
 {
     return author;
 }
@@ -67,7 +67,7 @@ FILE *music::play()
 }
 bool operator<(const music &M1, const music &M2)
 {
-    if (M1.showname() < M2.showname())
+    if (M1.getName() < M2.getName())
         return true;
     else
         return false;
@@ -75,19 +75,19 @@ bool operator<(const music &M1, const music &M2)
 
 bool operator>(const music &M1, const music &M2)
 {
-    if (M1.showname() > M2.showname())
+    if (M1.getName() > M2.getName())
         return true;
     else
         return false;
 }
 bool operator<=(const music &M1, const music &M2)
 {
-    if (M1.showname() <= M2.showname())
+    if (M1.getName() <= M2.getName())
         return true;
     else
         return false;
 }
-string music::Play()
+string music::getPath()
 {
     return path;
 }

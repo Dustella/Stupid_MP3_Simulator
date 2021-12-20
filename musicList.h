@@ -28,17 +28,17 @@ public:
     musicList(string list_name, vector<music> Mlist);
     musicList(const musicList &list); //复制构造函数
     musicList(vector<music> Mlist);
-    string showListName() const;
+    string showListName() const;     // 显示播放列表名字
     void PrintMusiclist() /*const*/; //显示这个歌单中所有歌曲的名字
     int static List_number();        //显示歌单数目的函数
     void Reset_ListName(string new_name);
     bool Add_Music(music M);              //增加歌曲
     bool Delete_Music(string music_name); //删除歌曲
     int Music_number_in_this_list();
-    vector<string> SearchAuthor(string author_name);
+    vector<string> SearchAuthor(string author_name); 
     bool search_music(string name);
     void sort_by_name(int low, int high);
-    void Operate_the_List();
+    void Operate_the_List(); // musicList 的 控制器
 };
 
 #endif // MUSICPLAYER_MUSICLIST_H
