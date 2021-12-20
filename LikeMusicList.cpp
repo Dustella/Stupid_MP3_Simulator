@@ -9,7 +9,7 @@ LikeMusicList::LikeMusicList(vector<music> MList)
 	}
 	music_number=MList.size();
 }
-bool LikeMusicList::Add_Music(music M){//Ôö¼Ó¸èÇú
+bool LikeMusicList::Add_Music(music M){//ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½
 	for(auto e:musiclist)
 		{
 			if(e==M)
@@ -23,7 +23,7 @@ bool LikeMusicList::Add_Music(music M){//Ôö¼Ó¸èÇú
 bool LikeMusicList::Delete_Music(string music_name) {
 	for(int i=0;i<music_number;i++)
 		{
-			if(musiclist[i].showname()==music_name)
+			if(musiclist[i].getName()==music_name)
 				{
 					musiclist[i].liked();
 					musiclist.erase(musiclist.begin()+i);

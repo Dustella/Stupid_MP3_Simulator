@@ -42,7 +42,7 @@ void Player::Order_Play()
 void Player::Play(music &M)
 {
 	char path[1024];
-	string p = M.Play();
+	string p = M.getPath();
 	for (int i = 0; i < p.length(); i++)
 	{
 		path[i] = p[i];

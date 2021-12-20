@@ -21,7 +21,7 @@ bool WIll_Play_List::Delete_Music(string music_name)
 {
     for (int i = 0; i < music_number; i++)
     {
-        if (musiclist[i].showname() == music_name)
+        if (musiclist[i].getName() == music_name)
         {
             musiclist.erase(musiclist.begin() + i);
             music_number--;

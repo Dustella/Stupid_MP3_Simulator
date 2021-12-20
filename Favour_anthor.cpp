@@ -109,7 +109,7 @@ Favour_anthor::Favour_anthor(string name, string sex, int age, vector<musicList>
 	{
 		for (auto Music : e.musiclist)
 		{
-			string MN = Music.showname();
+			string MN = Music.getName();
 			int flag = 1;
 			for (int i = 0; i < music_name.size(); i++)
 			{
@@ -130,9 +130,9 @@ Favour_anthor::Favour_anthor(string name, string sex, int age, vector<musicList>
 	}
 	for (auto Music : LM.musiclist)
 	{
-		if (Music.showauthor() == name)
+		if (Music.getAuther() == name)
 		{
-			string MN = Music.showname();
+			string MN = Music.getName();
 			int flag = 1;
 			for (int i = 0; i < music_name.size(); i++)
 			{
@@ -162,7 +162,7 @@ Favour_anthor::Favour_anthor(string name, string sex, int age, vector<musicList>
 			if (!e->is_liked())
 			{
 				e->liked();
-				if (LM.search_music(e->showname()) == false)
+				if (LM.search_music(e->getName()) == false)
 				{
 					LM.Add_Music(*e);
 				}
@@ -191,7 +191,7 @@ void Favour_anthor::Refresh(vector<musicList> &M, LikeMusicList &LM)
 	{
 		for (auto Music : e.musiclist)
 		{
-			string MN = Music.showname();
+			string MN = Music.getName();
 			int flag = 1;
 			for (int i = 0; i < music_name.size(); i++)
 			{
@@ -212,9 +212,9 @@ void Favour_anthor::Refresh(vector<musicList> &M, LikeMusicList &LM)
 	}
 	for (auto Music : LM.musiclist)
 	{
-		if (Music.showauthor() == name)
+		if (Music.getAuther() == name)
 		{
-			string MN = Music.showname();
+			string MN = Music.getName();
 			int flag = 1;
 			for (int i = 0; i < music_name.size(); i++)
 			{
@@ -254,7 +254,7 @@ void Favour_anthor::showMusic()
 		cout.width(5);
 		cout << i << " ";
 		cout.width(40);
-		cout << e->showname() << endl;
+		cout << e->getName() << endl;
 	}
 }
 

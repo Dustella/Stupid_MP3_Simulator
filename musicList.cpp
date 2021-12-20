@@ -9,6 +9,8 @@
 #include <vector>
 #include <set>
 using namespace std;
+
+
 int musicList::list_number = 0;
 musicList::musicList(const musicList &list)
 { //复制歌单
@@ -36,8 +38,8 @@ void musicList::PrintMusiclist()
     for (int i = 0; i < music_number; i++)
     {
         cout << i + 1 << " ";
-        string name_of_music = musiclist[i].showname();
-        string author_of_music = musiclist[i].showauthor();
+        string name_of_music = musiclist[i].getName();
+        string author_of_music = musiclist[i].getAuther();
         cout.width(40);
         cout << name_of_music;
         cout.width(40);
@@ -98,7 +100,7 @@ bool musicList::Delete_Music(string music_name)
 {
     for (int i = 0; i < music_number; i++)
     {
-        if (musiclist[i].showname() == music_name)
+        if (musiclist[i].getName() == music_name)
         {
             musiclist.erase(musiclist.begin() + i);
             music_number--;
@@ -120,9 +122,9 @@ vector<string> musicList::SearchAuthor(string author_name)
     vector<string> Music;
     for (auto e : musiclist)
     {
-        if (e.showauthor() == author_name)
+        if (e.getAuther() == author_name)
         {
-            string name = e.showname();
+            string name = e.getName();
             Music.push_back(name);
         }
     }
@@ -134,9 +136,9 @@ bool musicList::search_music(string name)
     set<string> author_name;
     for (auto e : musiclist)
     {
-        if (e.showname() == name)
+        if (e.getName() == name)
         {
-            author_name.insert(e.showauthor());
+            author_name.insert(e.getAuther());
             flag = 1;
         }
     }
