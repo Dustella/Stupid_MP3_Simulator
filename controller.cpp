@@ -4,6 +4,7 @@
 #include "musicList.cpp"
 #include "LikeMusicList.cpp"
 #include "Favour_anthor.cpp"
+#include <windows.h>
 #include <vector>
 #include <fstream>
 #include <string.h>
@@ -15,11 +16,19 @@ using namespace std;
 
 #include <io.h>
 
-void controller::readConfig(string filePath, string &lines)
+ void controller::readConfig(string filePath, vector<string> &lines)
 {
+    filePath += 'music_list_information.txt';
     ifstream inFile;
     inFile.open(filePath);
-    getline(inFile, lines);
+    string line;
+    int i = 0;
+    while (getline(inFile, line))
+    {
+        lines.push_back(line);
+        cout << line << endl;
+        i++;
+    }
 }
 
 void controller::getFiles(string ORING, vector<string> &files)
@@ -59,7 +68,7 @@ void controller::CreateList(string ORING, string name, musicList *M)
     // M->setListName(name);
     vector<string> path;
 
-    getFiles(ORING, path);
+    readConfig(ORING, path);
 
     // M->setListNumber(path.size());
     cout << path.size() << endl;
@@ -135,6 +144,7 @@ char controller::menu()
     cout << "创建喜欢的歌手请输入7" << endl;
     cout << "对歌手进行操作输入8" << endl;
     cout << "查看所有歌曲数目请输入9" << endl;
+    cout << "打开播放器播放音乐输入o" << endl;
     cout << "退出输入'q" << endl;
     cin >> f;
     return f;
@@ -275,6 +285,10 @@ void controller::selection(char choice, LikeMusicList &LM, vector<Favour_anthor>
     case '9':
     {
         cout << "现在程序中一共有歌曲" << music::Music_number() << "首" << endl;
+    }
+    case 'o':
+    {
+        WinExec("./player.exe", SW_SHOW);
     }
     break;
     }
