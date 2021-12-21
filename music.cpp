@@ -1,13 +1,13 @@
 #include "music.h"
 #include <string>
-#include "libzplay.h"
+// #include "libzplay.h"
 #include <string.h>
 
-using namespace libZPlay;
+// using namespace libZPlay;
 
 int music::number = 0;
 
-music::music(string N, string A, FILE *f) : name(N), author(A), music_file(f)
+music::music(string N, string A, string f) : name(N), author(A), music_file(f)
 {
     number++;
 }
@@ -26,14 +26,14 @@ music::music(string N, string A, FILE *f) : name(N), author(A), music_file(f)
 // }
 void music::setInfo()
 {
-    ZPlay *file = CreateZPlay();
-    const char *location = path.c_str();
-    TID3InfoEx id3_info;
-    if (file->LoadFileID3Ex(location, sfAutodetect, &id3_info, 1))
-    {
-        this->name = id3_info.Title;
-        this->author = id3_info.Artist;
-    }
+    // ZPlay *file = CreateZPlay();
+    // const char *location = path.c_str();
+    // TID3InfoEx id3_info;
+    // if (file->LoadFileID3Ex(location, sfAutodetect, &id3_info, 1))
+    // {
+    //     this->name = id3_info.Title;
+    //     this->author = id3_info.Artist;
+    // }
 }
 
 string music::getName() const
@@ -78,8 +78,9 @@ FILE *music::play()
         f[i] = filename[i];
     }
     filename[i] = 0;
-    music_file = fopen(f, "r");
-    return music_file;
+    cout << filename << "is playing" << endl;
+    // music_file = fopen(f, "r");
+    // return music_file;
 }
 bool operator<(const music &M1, const music &M2)
 {

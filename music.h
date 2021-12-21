@@ -13,7 +13,7 @@ class music
     friend bool operator==(music &m1, music &m2); //比较作者和歌曲名
 public:
     // music(){};w
-    music(string N, string A, FILE *f = nullptr);
+    music(string N, string A, string f);
     //  music(string N,string A,string filename);
     // music(string N,string A,string filename,FILE* f=nullptr);
     // music(string N,string A,string filename,string path,FILE* f=nullptr);
@@ -35,7 +35,7 @@ private:
     string author;              // 作者
     bool is_like = false;       //标记歌曲是否被喜欢
     static int number;          // 音乐序号
-    FILE *music_file = nullptr; // 音乐位置
+    string music_file = ""; // 音乐位置
     string path;
 };
 
