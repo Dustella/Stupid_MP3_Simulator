@@ -164,7 +164,7 @@ Favour_anthor::Favour_anthor(string name, string sex, int age, vector<musicList>
 				e->liked();
 				if (LM.search_music(e->getName()) == false)
 				{
-					LM.Add_Music(*e);
+					LM.append(*e);
 				}
 			}
 		}

@@ -2,7 +2,7 @@
 // Created by Mac on 2021/11/30.
 //
 
-#include "musicList.h"
+#include "playList.h"
 #include "music.h"
 #include <iostream>
 #include <string>
@@ -28,7 +28,7 @@ int musicList::getListNumber()
     return list_number;
 }
 
-void musicList::PrintMusiclist()
+string musicList::getFormattedList()
 {
     cout.width(40);
     cout << "Name of musics";
@@ -38,8 +38,8 @@ void musicList::PrintMusiclist()
     for (int i = 0; i < music_number; i++)
     {
         cout << i + 1 << " ";
-        string name_of_music = musiclist[i].getName();
-        string author_of_music = musiclist[i].getAuther();
+        string name_of_music = musiclist[i].getTitle();
+        string author_of_music = musiclist[i].getAuthor();
         cout.width(40);
         cout << name_of_music;
         cout.width(40);
@@ -84,7 +84,7 @@ void musicList::Reset_ListName(string new_name)
     list_name = new_name;
 }
 
-bool musicList::Add_Music(music M)
+bool musicList::append(music M)
 {
     for (auto e : musiclist)
     {
@@ -106,11 +106,11 @@ void musicList::setListName(string a)
     this->list_name = a;
 }
 
-bool musicList::Delete_Music(string music_name)
+bool musicList::pop(string music_name)
 {
     for (int i = 0; i < music_number; i++)
     {
-        if (musiclist[i].getName() == music_name)
+        if (musiclist[i].getTitle() == music_name)
         {
             musiclist.erase(musiclist.begin() + i);
             music_number--;
@@ -123,7 +123,7 @@ string musicList::showListName() const
 {
     return list_name;
 }
-int musicList::Music_number_in_this_list()
+int musicList::getNum()
 {
     return sizeof(musiclist);
 }
@@ -132,9 +132,9 @@ vector<string> musicList::SearchAuthor(string author_name)
     vector<string> Music;
     for (auto e : musiclist)
     {
-        if (e.getAuther() == author_name)
+        if (e.getAuthor() == author_name)
         {
-            string name = e.getName();
+            string name = e.getTitle();
             Music.push_back(name);
         }
     }
@@ -146,9 +146,9 @@ bool musicList::search_music(string name)
     set<string> author_name;
     for (auto e : musiclist)
     {
-        if (e.getName() == name)
+        if (e.getTitle() == name)
         {
-            author_name.insert(e.getAuther());
+            author_name.insert(e.getAuthor());
             flag = 1;
         }
     }
@@ -214,7 +214,7 @@ void musicList::Operate_the_List()
         {
         case 1:
         {
-            PrintMusiclist();
+            getFormattedList();
         }
         break;
         case 2:
@@ -248,7 +248,7 @@ void musicList::Operate_the_List()
         break;
         case 4:
         {
-            cout << Music_number_in_this_list() << endl;
+            cout << getNum() << endl;
         }
         break;
         case 5:
@@ -268,7 +268,7 @@ void musicList::Operate_the_List()
             string author;
             cin >> author;
             music Mu(name, author, nullptr);
-            Add_Music(Mu);
+            append(Mu);
         }
         break;
         case 7:
@@ -276,7 +276,7 @@ void musicList::Operate_the_List()
             cout << "请输入您需要删除的歌曲" << endl;
             string name;
             cin >> name;
-            Delete_Music(name);
+            pop(name);
         }
         break;
         case 0:

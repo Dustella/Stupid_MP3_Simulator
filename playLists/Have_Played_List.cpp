@@ -1,5 +1,5 @@
 #include "Have_Played_List.h"
-bool Have_Played_List:: Add_Music(music M){
+bool Have_Played_List:: append(music M){
     for(auto e:musiclist)
     {
         if(e==M)
@@ -10,7 +10,7 @@ bool Have_Played_List:: Add_Music(music M){
     return true;
 }
 
-bool Have_Played_List:: Delete_Music(string music_name){
+bool Have_Played_List:: pop(string music_name){
     for(int i=0;i<music_number;i++)
     {
         if(musiclist[i].getName()==music_name)
@@ -22,7 +22,7 @@ bool Have_Played_List:: Delete_Music(string music_name){
     }
     return false;
 }
-int Have_Played_List:: Music_number_in_this_list(){
+int Have_Played_List:: getNum(){
     return music_number;
 }
 Have_Played_List::~Have_Played_List(){

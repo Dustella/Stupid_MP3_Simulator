@@ -4,67 +4,28 @@
 #include <iostream>
 using namespace std;
 
-int music::number = 0;
+music::music(string N, string A, string K, string f) : Title(N), Author(A), Album(K), path(f) {}
 
-music::music(string N, string A, string f) : name(N), author(A), music_file(f)
+void music::setInfo(string title, string Author, string Album, string path)
 {
-    number++;
-}
-void music::setInfo()
-{
-}
-
-
-string music::getName() const
-{
-    return name;
-}
-string music::getAuther() const
-{
-    return author;
-}
-int music::Music_number()
-{
-    return number;
-}
-void music::liked()
-{
-    this->is_like = !is_like;
+    this->Title = title;
+    this->Author = Author;
+    this->path = path;
+    this->Album = Album;
 }
 
-music::~music()
-{
-    number--;
-}
-
+#pragma region operatorOverride
 bool operator==(music &m1, music &m2)
 {
-    if (m1.name == m2.name && m1.author == m2.author)
+    if (m1.Title == m2.Title && m1.Author == m2.Author)
         return true;
     else
         return false;
 }
-bool music::is_liked()
-{
-    return is_like;
-}
-void music::play()
-{
-    char f[1024];
-    int i = 0;
-    for (i = 0; i < filename.length(); i++)
-    {
-        f[i] = filename[i];
-    }
-    filename[i] = 0;
-    cout << filename << "is playing" << endl;
-    // music_file = fopen(f, "r");
-    // return music_file;
-    // return music_file;
-}
+
 bool operator<(const music &M1, const music &M2)
 {
-    if (M1.getName() < M2.getName())
+    if (M1.getTitle() < M2.getTitle())
         return true;
     else
         return false;
@@ -72,19 +33,33 @@ bool operator<(const music &M1, const music &M2)
 
 bool operator>(const music &M1, const music &M2)
 {
-    if (M1.getName() > M2.getName())
+    if (M1.getTitle() > M2.getTitle())
         return true;
     else
         return false;
 }
+
 bool operator<=(const music &M1, const music &M2)
 {
-    if (M1.getName() <= M2.getName())
+    if (M1.getTitle() <= M2.getTitle())
         return true;
     else
         return false;
 }
-string music::getPath()
+
+#pragma endregion operatorOverride
+
+#pragma region getSet
+
+string music::getPath() const
 {
     return path;
 }
+
+string music::getTitle() const { return Title; }
+
+string music::getAuthor() const { return Author; }
+
+string music::getAlbum() const { return Album; }
+
+#pragma endregion getSet

@@ -15,17 +15,17 @@ public:
     WIll_Play_List(const WIll_Play_List &w);
     WIll_Play_List() = default;
 
-    virtual bool Add_Music(music M) /*override*/;//Ôö¼Ó¸èÇú
-    bool Delete_Music(int i);//É¾³ý¸èÇú
-    virtual bool Delete_Music(string music_name) /*override*/;
-    virtual int Music_number_in_this_list() /*override*/;
+    virtual bool append(music M) /*override*/;//ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½
+    bool pop(int i);//É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+    virtual bool pop(string music_name) /*override*/;
+    virtual int getNum() /*override*/;
     ~WIll_Play_List();
     vector<music> The_Music_List();
     
 
 private:
-    vector<music> musiclist;//´æ·Å¸èÇú
-    int music_number=0;//¼ÇÂ¼Õâ¸ö¸èµ¥ÖÐ¸èÇúµÄÊýÁ¿
+    vector<music> musiclist;//ï¿½ï¿½Å¸ï¿½ï¿½ï¿½
+    int music_number=0;//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½èµ¥ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 };
 
 #endif

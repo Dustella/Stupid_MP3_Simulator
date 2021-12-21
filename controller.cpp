@@ -113,7 +113,7 @@ void controller::Print_All_the_List(const vector<musicList> &The_lists)
         cout.width(30);
         cout << M.showListName();
         cout << endl;
-        M.PrintMusiclist();
+        M.getFormattedList();
     }
 }
 
@@ -199,18 +199,18 @@ void controller::selection(char choice, LikeMusicList &LM, vector<Favour_anthor>
             if (index == -1)
                 break;
             M.musiclist[index - 1].is_liked();
-            LM.Add_Music(M.musiclist[index - 1]);
+            LM.append(M.musiclist[index - 1]);
         }
     }
     break;
     case '3':
     {
-        if (LM.Music_number_in_this_list() == 0)
+        if (LM.getNum() == 0)
         {
             cout << "Ã»ÓÐÏ²»¶µÄ¸èÇú" << endl;
             break;
         }
-        LM.PrintMusiclist();
+        LM.getFormattedList();
     }
     break;
     case '4':

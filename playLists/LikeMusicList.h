@@ -11,9 +11,9 @@ public:
 	vector<music> musiclist;
 	LikeMusicList(){}
 	LikeMusicList(vector<music> MList);
-	bool Add_Music(music M);//���Ӹ���
-	bool Delete_Music(string music_name);//ɾ������
-	int Music_number_in_this_list();
+	bool append(music M);//���Ӹ���
+	bool pop(string music_name);//ɾ������
+	int getNum();
 	string showListName();
 };
 

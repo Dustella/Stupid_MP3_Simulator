@@ -12,15 +12,15 @@ using namespace std;
 class Have_Played_List:public List{
 //  friend class Player;
 private:
-    vector<music>musiclist;//´æ·Å¸èÇú
+    vector<music>musiclist;//ï¿½ï¿½Å¸ï¿½ï¿½ï¿½
     int music_number=0;
 public:
     Have_Played_List() = default;
 
-    virtual bool Add_Music(music M) /*override*/;
-    virtual bool Delete_Music(string music_name) /*override*/;
+    virtual bool append(music M) /*override*/;
+    virtual bool pop(string music_name) /*override*/;
     ~Have_Played_List();
-    virtual int Music_number_in_this_list() /*override*/;
+    virtual int getNum() /*override*/;
     vector<music> The_Music_List();
     
 };

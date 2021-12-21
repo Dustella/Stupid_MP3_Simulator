@@ -5,7 +5,7 @@ WIll_Play_List::WIll_Play_List(musicList L)
     music_number = musiclist.size();
 }
 
-bool WIll_Play_List::Add_Music(music M)
+bool WIll_Play_List::append(music M)
 {
     for (auto e : musiclist)
     {
@@ -17,7 +17,7 @@ bool WIll_Play_List::Add_Music(music M)
     return true;
 }
 
-bool WIll_Play_List::Delete_Music(string music_name)
+bool WIll_Play_List::pop(string music_name)
 {
     for (int i = 0; i < music_number; i++)
     {
@@ -31,7 +31,7 @@ bool WIll_Play_List::Delete_Music(string music_name)
     return false;
 }
 
-bool WIll_Play_List::Delete_Music(int i)
+bool WIll_Play_List::pop(int i)
 {
     if (i >= music_number)
         return false;
@@ -43,7 +43,7 @@ bool WIll_Play_List::Delete_Music(int i)
     }
 }
 
-int WIll_Play_List::Music_number_in_this_list()
+int WIll_Play_List::getNum()
 {
     return music_number;
 }
