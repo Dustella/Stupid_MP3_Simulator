@@ -16,7 +16,7 @@ using namespace std;
 
 #include <io.h>
 
- void controller::readConfig(string filePath, vector<string> &lines)
+void controller::readConfig(string filePath, vector<string> &lines)
 {
     filePath += 'music_list_information.txt';
     ifstream inFile;
@@ -31,9 +31,10 @@ using namespace std;
     }
 }
 
-void controller::getFiles(string ORING, vector<string> &files)
+// void controller::getFiles(string ORING, vector<string> &files)
+void getFiles(string ORING, vector<string> &files)
 {
-
+    // cout<<"hhhh"<<endl;
     long hFile = 0;
     //文件信息，声明一个存储文件信息的结构体
     struct _finddata_t fileinfo;
@@ -69,34 +70,18 @@ void controller::CreateList(string ORING, string name, musicList *M)
     vector<string> path;
 
     readConfig(ORING, path);
-
+    if (path.size() == 0)
+    {
+        string s1 = "D:\\music\\天路-韩红.mp3";
+        path.push_back(s1);
+    }
     // M->setListNumber(path.size());
     cout << path.size() << endl;
-    for (int i = 0; i < path.size(); i++)
+    for (auto e : path)
     {
-        string e = path[i];
-        cout << path[i] << endl;
-        string file_name = e.substr(e.find_last_of("/"), e.length());
-        cout << file_name << "is the" << endl;
-        string music_name;
-        music_name = file_name.substr(file_name.find_first_of("-"), file_name.length());
-        cout << music_name << endl;
-        // int i = 0;
-        // while (e[i] != '-')
-        // {
-        //     music_name[i] = e[i];
-        //     i++;
-        // }
-        // music_name[i]=0;
-        // i++;
-        // string author;
-        // while (e[i] != '.')
-        // {
-        //     author[i] = e[i];
-        //     i++;
-        // }
-        // author[i] = 0;
-        string author = "";
+
+        string music_name = "天路";
+        string author = "韩红";
         music Mu(music_name, author, e);
     }
     M->sort_by_name(0, M->musiclist.size() - 1);

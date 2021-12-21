@@ -11,6 +11,7 @@
 using namespace std;
 
 int musicList::list_number = 0;
+
 musicList::musicList(const musicList &list)
 { //复制歌单
     list_name = list.list_name;

@@ -5,14 +5,14 @@
 
 class LikeMusicList :public musicList{
 private:
-	const string list_name="The music that I love";//¸èµ¥µÄÃû×Ö
-	int music_number=0;//¼ÇÂ¼Õâ¸ö¸èµ¥ÖÐ¸èÇúµÄÊýÁ¿
+	const string list_name="The music that I love";//ï¿½èµ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	int music_number=0;//ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½èµ¥ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 public:
 	vector<music> musiclist;
 	LikeMusicList(){}
 	LikeMusicList(vector<music> MList);
-	bool Add_Music(music M);//Ôö¼Ó¸èÇú
-	bool Delete_Music(string music_name);//É¾³ý¸èÇú
+	bool Add_Music(music M);//ï¿½ï¿½ï¿½Ó¸ï¿½ï¿½ï¿½
+	bool Delete_Music(string music_name);//É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	int Music_number_in_this_list();
 	string showListName();
 };
