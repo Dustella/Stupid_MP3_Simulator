@@ -14,13 +14,16 @@ using namespace std;
 
 #include <io.h>
 
-void controller::getFiles(string path, vector<string> &files)
+void controller::readConfig(string filePath, )
+
+void controller::getFiles(string ORING, vector<string> &files)
 {
+
     long hFile = 0;
     //文件信息，声明一个存储文件信息的结构体
     struct _finddata_t fileinfo;
     string p;                                                                        //字符串，存放路径
-    if ((hFile = _findfirst(p.assign(path).append("\\*").c_str(), &fileinfo)) != -1) //若查找成功，则进入
+    if ((hFile = _findfirst(p.assign(ORING).append("\\*").c_str(), &fileinfo)) != -1) //若查找成功，则进入
     {
         do
         {
@@ -30,12 +33,12 @@ void controller::getFiles(string path, vector<string> &files)
                 //文件名不等于"."&&文件名不等于".."
                 //判断时，两者都要忽略，不然就无限递归跳不出去了！
                 if (strcmp(fileinfo.name, ".") != 0 && strcmp(fileinfo.name, "..") != 0)
-                    getFiles(p.assign(path).append("\\").append(fileinfo.name), files);
+                    getFiles(p.assign(ORING).append("\\").append(fileinfo.name), files);
             }
             //如果不是,加入列表
             else
             {
-                files.push_back(p.assign(path).append("\\").append(fileinfo.name));
+                files.push_back(p.assign(ORING).append("\\").append(fileinfo.name));
             }
         } while (_findnext(hFile, &fileinfo) == 0);
         //_findclose函数结束查找
@@ -45,14 +48,22 @@ void controller::getFiles(string path, vector<string> &files)
 
 void controller::CreateList(string ORING, string name, musicList *M)
 {
-    M->setListName(name);
+    cout << ORING << " " << name << endl;
+    cout << "CreatingList" << endl;
+    // M->setListName(name);
     vector<string> path;
+
+
     getFiles(ORING, path);
-    M->setListNumber(path.size());
-    for (auto e : path)
+    
+    // M->setListNumber(path.size());
+    cout<<path.size() << endl;
+    for (int i = 0; i < path.size(); i++)
     {
+        string e=path[i];
+        cout << path[i] << endl;
         string file_name = e.substr(e.find_last_of("/"), e.length());
-        cout << file_name << endl;
+        cout << file_name << "is the" << endl;
         string music_name;
         music_name = file_name.substr(file_name.find_first_of("-"), file_name.length());
         cout << music_name << endl;
@@ -140,11 +151,12 @@ void controller::init(LikeMusicList &LM, vector<Favour_anthor> set_of_anthor, ve
             judge.insert(e[n - 1]);
         }
         string name;
-        if (judge.size() == 2)
-        {
-            cout << "请输入歌单的名称" << endl;
-            cin >> name;
-        }
+        // if (judge.size() == 2)
+        // {
+        cout << "请输入歌单的名称" << endl;
+        cin >> name;
+        // }
+        
         musicList M;
         CreateList(path, name, &M);
         The_list_of_musicList.push_back(M);

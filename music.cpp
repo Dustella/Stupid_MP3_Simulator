@@ -69,7 +69,7 @@ bool music::is_liked()
 {
     return is_like;
 }
-FILE *music::play()
+void music::play()
 {
     char f[1024];
     int i = 0;
@@ -80,6 +80,7 @@ FILE *music::play()
     filename[i] = 0;
     cout << filename << "is playing" << endl;
     // music_file = fopen(f, "r");
+    // return music_file;
     // return music_file;
 }
 bool operator<(const music &M1, const music &M2)

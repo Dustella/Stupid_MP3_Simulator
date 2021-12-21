@@ -24,7 +24,7 @@ public:
     static int Music_number(); // 得到音乐序号
     void liked();              //切换喜欢
     void setInfo();
-    FILE *play();              //得到
+    void play();              //得到
     string getPath();          // 返回路径
     bool is_liked();
     ~music();
