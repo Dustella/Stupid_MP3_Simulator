@@ -5,6 +5,7 @@
 #include "LikeMusicList.cpp"
 #include "Favour_anthor.cpp"
 #include <vector>
+#include <fstream>
 #include <string.h>
 #include <string>
 #include <cstring>
@@ -14,7 +15,12 @@ using namespace std;
 
 #include <io.h>
 
-void controller::readConfig(string filePath, )
+void controller::readConfig(string filePath, string &lines)
+{
+    ifstream inFile;
+    inFile.open(filePath);
+    getline(inFile, lines);
+}
 
 void controller::getFiles(string ORING, vector<string> &files)
 {
@@ -22,7 +28,7 @@ void controller::getFiles(string ORING, vector<string> &files)
     long hFile = 0;
     //文件信息，声明一个存储文件信息的结构体
     struct _finddata_t fileinfo;
-    string p;                                                                        //字符串，存放路径
+    string p;                                                                         //字符串，存放路径
     if ((hFile = _findfirst(p.assign(ORING).append("\\*").c_str(), &fileinfo)) != -1) //若查找成功，则进入
     {
         do
@@ -53,14 +59,13 @@ void controller::CreateList(string ORING, string name, musicList *M)
     // M->setListName(name);
     vector<string> path;
 
-
     getFiles(ORING, path);
-    
+
     // M->setListNumber(path.size());
-    cout<<path.size() << endl;
+    cout << path.size() << endl;
     for (int i = 0; i < path.size(); i++)
     {
-        string e=path[i];
+        string e = path[i];
         cout << path[i] << endl;
         string file_name = e.substr(e.find_last_of("/"), e.length());
         cout << file_name << "is the" << endl;
@@ -156,7 +161,7 @@ void controller::init(LikeMusicList &LM, vector<Favour_anthor> set_of_anthor, ve
         cout << "请输入歌单的名称" << endl;
         cin >> name;
         // }
-        
+
         musicList M;
         CreateList(path, name, &M);
         The_list_of_musicList.push_back(M);
