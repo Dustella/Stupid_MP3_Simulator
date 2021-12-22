@@ -17,20 +17,19 @@ class playlist : public List
     friend class WIll_Play_List;
 
 private:
-
-    int totalMusicNum = 0;   //记录这个歌单中歌曲的数量
-    string playListName;     //歌单的名字
+    int totalMusicNum = 0; //记录这个歌单中歌曲的数量
+    string playListName;   //歌单的名字
 
 public:
-    vector<music> musiclist; //存放歌曲
+    vector<music> musiclist;        //存放歌曲
     playlist(const playlist &list); //复制构造函数
     playlist(){};
     playlist(string playListName, vector<music> Mlist);
 
-    bool append(music M);        //增加歌曲
-    void insert(int pos,music M); //
-    bool pop(string music_name); //删除歌曲
-    int length();                //得到长度
+    bool append(music M);          //增加歌曲
+    void insert(int pos, music M); //
+    bool pop(string music_name);   //删除歌曲
+    int length();                  //得到长度
     void updateLength();
     void swap(int a, int b);
 
@@ -40,9 +39,13 @@ public:
 
     void setPlaylist(playlist ls);
 
-
     vector<music> searchByAuthor(string author_name);
     vector<music> searchByTitle(string name);
+
+    music operator[](int i)
+    {
+        return musiclist[i];
+    }
 };
 
 #endif // MUSICPLAYER_MUSICLIST_H
