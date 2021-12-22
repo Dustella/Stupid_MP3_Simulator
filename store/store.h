@@ -3,27 +3,28 @@
 
 #include <iostream>
 #include <fstream>
-#include "../playLists/playList.h"
-#include "../utils/CJsonObject.hpp"
+#include "../playLists/playList.cpp"
+#include "../utils/CJsonObject.cpp"
 
 using namespace std;
 using namespace neb;
 
 class store
 {
+private:
 public:
+    CJsonObject data;
     store();
-    void addPlaylist(string name);
+    ~store();
+    void addPlaylist(playlist ls);
     void syncPlaylist(playlist ls);
     void deletePlaylist(playlist ls);
 
     string fetchStore();
-    void writeStore(string content);
+    void writeStore();
 
     vector<playlist> getAllPlaylists();
     playlist getPlaylist(string name);
-private:
-    CJsonObject data;
 };
 
 #endif

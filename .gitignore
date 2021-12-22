@@ -1,6 +1,8 @@
-*.exe
 *
 !.gitignore
+!store.json
 !*.cpp
 !*.h
-!*/
+!*.hpp
+!*.c
+!utils
