@@ -5,6 +5,7 @@
 #include "List.h"
 #include <vector>
 #include <string>
+
 class WIll_Play_List;
 class Player;
 class musicList : public List
@@ -16,6 +17,7 @@ class musicList : public List
     friend class WIll_Play_List;
 
 private:
+
     int totalMusicNum = 0;   //记录这个歌单中歌曲的数量
     string playListName;     //歌单的名字
     vector<music> musiclist; //存放歌曲
@@ -28,6 +30,7 @@ public:
     bool append(music M);        //增加歌曲
     bool pop(string music_name); //删除歌曲
     int length();                //得到长度
+    void updateLength();
 
     void setListName(string a);
     string getListName() const; // 显示播放列表名字

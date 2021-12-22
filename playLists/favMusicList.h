@@ -5,16 +5,14 @@
 
 class LikeMusicList :public musicList{
 private:
-	const string playListName="The music that I love";//�赥������
-	int totalMusicNum=0;//��¼����赥�и���������
+	const string playListName="Favorites";//
+	
 public:
-	vector<music> musiclist;
+
 	LikeMusicList(){}
 	LikeMusicList(vector<music> MList);
-	bool append(music M);//���Ӹ���
-	bool pop(string music_name);//ɾ������
-	int getNum();
-	string getListName();
+
+
 };
 
 #endif

@@ -79,6 +79,11 @@ bool musicList::append(music M)
     return true;
 }
 
+void musicList::updateLength()
+{
+    this->totalMusicNum = musiclist.size();
+}
+
 void musicList::setListName(string a)
 {
     this->playListName = a;
