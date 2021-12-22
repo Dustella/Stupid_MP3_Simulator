@@ -1,16 +1,12 @@
 #include "Player.h"
-#include "musicList.h"
-#include "LikeMusicList.h"
+#include "playList.h"
+#include "favMusicList.h"
 #include <vector>
 #include <string>
 #include <time.h>
-#define _CRT_SECURE_NO_WARNINGS
-#include <windows.h>
 #include <iostream>
 #include <cstring>
 #include <stdlib.h>
-#pragma comment(lib, "winmm.lib")
-#include <mmsystem.h>
 
 using namespace std;
 

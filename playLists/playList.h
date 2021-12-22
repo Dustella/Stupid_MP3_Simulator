@@ -1,5 +1,5 @@
-#ifndef MUSICPLAYER_MUSICLIST_H
-#define MUSICPLAYER_MUSICLIST_H
+#ifndef PLAYLIST_H
+#define PLAYLIST_H
 
 #include "music.h"
 #include "List.h"
@@ -31,6 +31,7 @@ public:
     bool pop(string music_name); //删除歌曲
     int length();                //得到长度
     void updateLength();
+    void swap(int a, int b);
 
     void setListName(string a);
     string getListName() const; // 显示播放列表名字

@@ -1,4 +1,4 @@
-#include "../music/music.h"
+#include "music.h"
 #include <string>
 #include <string.h>
 #include <iostream>

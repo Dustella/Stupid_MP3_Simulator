@@ -84,6 +84,12 @@ void musicList::updateLength()
     this->totalMusicNum = musiclist.size();
 }
 
+void musicList::swap(int a, int b){
+    music tmp=musiclist[a];
+    musiclist[a]=musiclist[b];
+    musiclist[b]=tmp;
+}
+
 void musicList::setListName(string a)
 {
     this->playListName = a;

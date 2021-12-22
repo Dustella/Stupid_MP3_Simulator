@@ -7,7 +7,7 @@ class List
 {
 public:
 	virtual bool append(music M) = 0;		 //
-	virtual bool pop(string music_name) = 0; //
+	virtual bool pop(string music_name) = 0; 
 	virtual int length() = 0;
 	virtual void setListName(string a) = 0;
 	string getListName() const;	   // 显示播放列表名字
