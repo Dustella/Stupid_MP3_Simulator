@@ -84,7 +84,7 @@ void store::syncPlaylist(playlist ls)
     cout << name << endl;
     if (data.GetKey(name))
     {
-        cout <<"is"<< endl;
+        cout << "is" << endl;
 
         data.AddEmptySubArray(ls.getListName());
     }
@@ -98,6 +98,13 @@ void store::syncPlaylist(playlist ls)
         musicObject.Add("Author", tmp.getAuthor());
         data[ls.getListName()].Add(musicObject);
     }
+    writeStore();
+}
+
+void store::deletePlaylist(string a)
+{
+    const string todel = a;
+    data.Delete(todel);
 }
 
 // int main()

@@ -18,7 +18,7 @@ public:
     ~store();
     void addPlaylist(playlist ls);
     void syncPlaylist(playlist ls);
-    void deletePlaylist(playlist ls);
+    void deletePlaylist(string ls);
 
     string fetchStore();
     void writeStore();

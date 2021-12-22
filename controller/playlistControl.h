@@ -11,10 +11,20 @@ private:
     store storage;
 
 public:
-    void init();
+    void refresh();
+
     void promotListOpt();
     void promotAddGuide();
+    void promotDeleteGuide();
+    void promotlistManager();
+
+    void printAllLists();
+    void printAllMusics(playlist la);
+
     void addMusic(playlist &ls);
+    void removeMusic(playlist &ls);
+    void ManageList(playlist &ls);
+
     playlistControl();
     ~playlistControl();
 };
