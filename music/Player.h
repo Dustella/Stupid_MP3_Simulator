@@ -1,9 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "music.h"
-#include "playList.h"
-#include "nowPlayinglist.h"
+#include "../playLists/nowPlayinglist.cpp"
 
 using namespace std;
 
@@ -16,8 +14,12 @@ public:
 	void nextPlay();
 	void previousPlay();
 
+	string playingInfo();
+
 	Player(playlist M);
 	Player();
+
+	void setPlaylist(playlist L);
 
 private:
 	bool isPaused = true;

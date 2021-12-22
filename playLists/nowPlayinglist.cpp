@@ -1,6 +1,6 @@
 #include "nowPlayinglist.h"
 
-int nowPlayinglist::getNowPlayingID() const
+int nowPlayinglist::getNowPlayingID() 
 {
     return nowPlayinglist::nowPlayingID;
 }
@@ -10,10 +10,13 @@ void nowPlayinglist::setNowPlayingID(int nowPlayingID)
     this->nowPlayingID = nowPlayingID;
 }
 
-music nowPlayinglist::getNowPlayingMusic() const
+music nowPlayinglist::getNowPlayingMusic() 
 {
-    return nowPlayinglist::nowPlayingMusic;
+    return musiclist[getNowPlayingID()];
 }
+
+
+
 
 void nowPlayinglist::insertNextPlaying(music newPlaying)
 {
@@ -21,6 +24,10 @@ void nowPlayinglist::insertNextPlaying(music newPlaying)
 }
 
 nowPlayinglist::nowPlayinglist(playlist M) : playlist(M)
+{
+    this->nowPlayingID = 0;
+}
+nowPlayinglist::nowPlayinglist() : playlist()
 {
     this->nowPlayingID = 0;
 }

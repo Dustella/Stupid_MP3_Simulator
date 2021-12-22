@@ -1,7 +1,7 @@
 #ifndef PLAYLIST_H
 #define PLAYLIST_H
 
-#include "../music/music.h"
+#include "../music/music.cpp"
 #include "List.h"
 #include <vector>
 #include <string>
@@ -37,6 +37,8 @@ public:
     void setListName(string a);
     string getListName() const; // 显示播放列表名字
     string getFormattedList();  //显示这个歌单中所有歌曲的名字
+
+    void setPlaylist(playlist ls);
 
 
     vector<music> searchByAuthor(string author_name);

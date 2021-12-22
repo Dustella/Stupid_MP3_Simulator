@@ -1,24 +1,23 @@
 #ifndef play_control
 #define play_control
 
-#include "Player.h"
+#include "../music/Player.h"
 
 class playControl
 {
 private:
-    /* data */
+    Player player;
 public:
-    playControl(/* args */);
+    string nowPlaying();
+    string nowPlayingList();
+
+    
+
+    playControl();
     ~playControl();
 };
 
-playControl::playControl(/* args */)
-{
-}
 
-playControl::~playControl()
-{
-}
 
 
 #endif

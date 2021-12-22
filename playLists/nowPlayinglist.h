@@ -1,21 +1,21 @@
 #ifndef NOWPLAYINGLIST
 #define NOWPLAYINGLIST
 
-#include "playList.h"
+#include "playList.cpp"
 
 class nowPlayinglist: public playlist
 {
 private:
 
     int nowPlayingID;
-    music nowPlayingMusic;
 
 public:
+    nowPlayinglist();
     nowPlayinglist(playlist M);
 
-    int getNowPlayingID() const ;
+    int getNowPlayingID()  ;
     void setNowPlayingID(int nowPlayingID);
-    music getNowPlayingMusic() const;
+    music getNowPlayingMusic() ;
     void insertNextPlaying(music newPlaying);
 
 };

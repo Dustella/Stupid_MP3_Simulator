@@ -1,5 +1,4 @@
 #include "playList.h"
-#include "../music/music.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -41,6 +40,7 @@ string playlist::getFormattedList()
         result += musiclist[i].getTitle() + "\n";
         result += musiclist[i].getAuthor() + "\n";
     }
+    return result;
 }
 
 void playlist::insert(int pos, music ins)
@@ -113,6 +113,15 @@ bool playlist::pop(string music_name)
         }
     }
     return false;
+}
+
+void playlist::setPlaylist(playlist ls)
+{
+    this->musiclist.clear();
+    for (music e : ls.musiclist)
+    {
+        append(e);
+    }
 }
 
 string playlist::getListName() const
