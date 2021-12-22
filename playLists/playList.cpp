@@ -8,7 +8,7 @@ using namespace std;
 
 #pragma region constructor
 
-musicList::musicList(const musicList &list)
+playlist::playlist(const playlist &list)
 { //复制歌单
     playListName = list.playListName;
     totalMusicNum = list.totalMusicNum;
@@ -18,7 +18,7 @@ musicList::musicList(const musicList &list)
     }
 }
 
-musicList::musicList(string playListName, vector<music> Mlist)
+playlist::playlist(string playListName, vector<music> Mlist)
 { //构造函数
     this->playListName = playListName;
     totalMusicNum = Mlist.size();
@@ -30,7 +30,7 @@ musicList::musicList(string playListName, vector<music> Mlist)
 
 #pragma endregion constructor
 
-string musicList::getFormattedList()
+string playlist::getFormattedList()
 {
     string result = "";
     result += "Name of musics\n";
@@ -43,15 +43,15 @@ string musicList::getFormattedList()
     }
 }
 
-void musicList::insert(int pos, music ins)
+void playlist::insert(int pos, music ins)
 {
     musiclist.insert(musiclist.begin() + pos, ins);
 }
 
 #pragma region operaterOverrides
-musicList operator+(musicList &list1, musicList &list2)
+playlist operator+(playlist &list1, playlist &list2)
 { //合并歌单
-    musicList list3;
+    playlist list3;
 
     list3.playListName = list1.playListName + " and " + list2.playListName;
     for (auto e : list1.musiclist)
@@ -72,7 +72,7 @@ musicList operator+(musicList &list1, musicList &list2)
 
 #pragma endregion operatorOverride
 
-bool musicList::append(music M)
+bool playlist::append(music M)
 {
     for (auto e : musiclist)
     {
@@ -84,24 +84,24 @@ bool musicList::append(music M)
     return true;
 }
 
-void musicList::updateLength()
+void playlist::updateLength()
 {
     this->totalMusicNum = musiclist.size();
 }
 
-void musicList::swap(int a, int b)
+void playlist::swap(int a, int b)
 {
     music tmp = musiclist[a];
     musiclist[a] = musiclist[b];
     musiclist[b] = tmp;
 }
 
-void musicList::setListName(string a)
+void playlist::setListName(string a)
 {
     this->playListName = a;
 }
 
-bool musicList::pop(string music_name)
+bool playlist::pop(string music_name)
 {
     for (int i = 0; i < totalMusicNum; i++)
     {
@@ -115,17 +115,17 @@ bool musicList::pop(string music_name)
     return false;
 }
 
-string musicList::getListName() const
+string playlist::getListName() const
 {
     return playListName;
 }
 
-int musicList::length()
+int playlist::length()
 {
     return sizeof(musiclist);
 }
 
-vector<music> musicList::searchByAuthor(string autherName)
+vector<music> playlist::searchByAuthor(string autherName)
 {
     vector<music> result;
     for (auto e : musiclist)
@@ -138,7 +138,7 @@ vector<music> musicList::searchByAuthor(string autherName)
     return result;
 }
 
-vector<music> musicList::searchByTitle(string titleName)
+vector<music> playlist::searchByTitle(string titleName)
 {
     vector<music> result;
 

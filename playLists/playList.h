@@ -8,12 +8,12 @@
 
 class WIll_Play_List;
 class Player;
-class musicList : public List
+class playlist : public List
 {
 
-    friend void CreateList(string path, string name, musicList *M);
+    friend void CreateList(string path, string name, playlist *M);
     friend class Player;
-    friend musicList operator+(musicList &list1, musicList &list2); //用于合并歌单
+    friend playlist operator+(playlist &list1, playlist &list2); //用于合并歌单
     friend class WIll_Play_List;
 
 private:
@@ -23,9 +23,9 @@ private:
 
 public:
     vector<music> musiclist; //存放歌曲
-    musicList(){};
-    musicList(string playListName, vector<music> Mlist);
-    musicList(const musicList &list); //复制构造函数
+    playlist(const playlist &list); //复制构造函数
+    playlist(){};
+    playlist(string playListName, vector<music> Mlist);
 
     bool append(music M);        //增加歌曲
     void insert(int pos,music M); //

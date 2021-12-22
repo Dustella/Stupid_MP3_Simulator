@@ -3,14 +3,15 @@
 
 #include "playList.h"
 
-class nowPlayinglist
+class nowPlayinglist: public playlist
 {
 private:
 
     int nowPlayingID;
     music nowPlayingMusic;
-    
+
 public:
+    nowPlayinglist(playlist M);
 
     int getNowPlayingID() const ;
     void setNowPlayingID(int nowPlayingID);

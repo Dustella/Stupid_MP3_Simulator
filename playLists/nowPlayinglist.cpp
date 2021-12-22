@@ -1,12 +1,26 @@
 #include "nowPlayinglist.h"
 
-int nowPlayinglist::getNowPlayingID() const { return nowPlayinglist::nowPlayingID; }
+int nowPlayinglist::getNowPlayingID() const
+{
+    return nowPlayinglist::nowPlayingID;
+}
 
-void nowPlayinglist::setNowPlayingID(int nowPlayingID) { this->nowPlayingID = nowPlayingID; }
+void nowPlayinglist::setNowPlayingID(int nowPlayingID)
+{
+    this->nowPlayingID = nowPlayingID;
+}
 
-music nowPlayinglist::getNowPlayingMusic() const { return nowPlayinglist::nowPlayingMusic; }
+music nowPlayinglist::getNowPlayingMusic() const
+{
+    return nowPlayinglist::nowPlayingMusic;
+}
 
 void nowPlayinglist::insertNextPlaying(music newPlaying)
 {
-    musicList::musiclist.insert(nowPlayingID, newPlaying);
+    insert(nowPlayingID, newPlaying);
+}
+
+nowPlayinglist::nowPlayinglist(playlist M) : playlist(M)
+{
+    this->nowPlayingID = 0;
 }

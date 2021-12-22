@@ -66,7 +66,7 @@ void getFiles(string path, vector<string> &files)
     }
 }
 
-void CreateList(string path, string name, musicList *M)
+void CreateList(string path, string name, playlist *M)
 {
     M->list_name = name;
 
@@ -94,7 +94,7 @@ void CreateList(string path, string name, musicList *M)
     M->sort_by_name(0, M->musiclist.size() - 1);
 }
 
-void Operate_The_author(vector<Favour_anthor> &s, vector<musicList> &m, LikeMusicList &lm)
+void Operate_The_author(vector<Favour_anthor> &s, vector<playlist> &m, LikeMusicList &lm)
 {
     cout << "请输入您希望进行操作的歌手的索引" << endl;
     int i = 0;
@@ -113,7 +113,7 @@ void Operate_The_author(vector<Favour_anthor> &s, vector<musicList> &m, LikeMusi
     (s[index]).Operate_The_author(s, m, lm);
 }
 
-void Print_All_the_List(const vector<musicList> &The_lists)
+void Print_All_the_List(const vector<playlist> &The_lists)
 {
     for (auto M : The_lists)
     {
@@ -129,7 +129,7 @@ int main()
     LikeMusicList LM;
     cout << "=====================欢迎使用音乐管理系统===================" << endl;
     vector<Favour_anthor> set_of_anthor;
-    vector<musicList> The_list_of_musicList;
+    vector<playlist> The_list_of_musicList;
     while (1)
     {
 
@@ -149,7 +149,7 @@ int main()
             cout << "请输入歌单的名称" << endl;
             cin >> name;
         }
-        musicList M;
+        playlist M;
         CreateList(path, name, &M);
         The_list_of_musicList.push_back(M);
         cout << "您是否希望继续创建新的歌单(y/n）:";
@@ -180,7 +180,7 @@ int main()
         {
         case '1':
         {
-            cout << "现在系统当中共有歌单" << musicList::List_number() << endl;
+            cout << "现在系统当中共有歌单" << playlist::List_number() << endl;
             Print_All_the_List(The_list_of_musicList);
         }
         break;
@@ -190,7 +190,7 @@ int main()
             int j;
             cin >> j;
 
-            musicList &M = The_list_of_musicList[j];
+            playlist &M = The_list_of_musicList[j];
 
             cout << "请输入你喜欢的歌曲,输入-1退出" << endl;
             int index;
@@ -218,7 +218,7 @@ int main()
             cout << "请输入您希望进行合并的两个歌单的索引" << endl;
             int i, j;
             cin >> i >> j;
-            musicList M = The_list_of_musicList[i] + The_list_of_musicList[j];
+            playlist M = The_list_of_musicList[i] + The_list_of_musicList[j];
 
             cout << "请您数新歌单的名字" << endl;
             string new_name;

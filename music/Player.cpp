@@ -3,58 +3,38 @@
 #include "favMusicList.h"
 #include <vector>
 #include <string>
-#include <time.h>
 #include <iostream>
 #include <cstring>
 #include <stdlib.h>
 
 using namespace std;
 
-void Player::Random_Play()
+void Player::setPlaybackState(string mode)
 {
-	int n = LIST->musiclist.size();
-	vector<int> have_played;
-	vector<int> will_play;
-	for (int i = 0; i < n; i++)
-	{
-		will_play.push_back(i);
-	}
-	srand((int)time(0));
-	while (will_play.size() != 0)
-	{
-		int j = rand() % will_play.size();
-		Play(LIST->musiclist[will_play[j]]);
-		will_play.erase(will_play.begin() + j);
-	}
-}
-void Player::Order_Play()
-{
-	for (auto e : LIST->musiclist)
-	{
-		Play(e);
-	}
+	this->playbackState = mode;
 }
 
-void Player::Play(music &M)
+void Player::play()
 {
-	char path[1024];
-	string p = M.getPath();
-	for (int i = 0; i < p.length(); i++)
-	{
-		path[i] = p[i];
-	}
-	char open[] = "open ";
-	char play[] = "play ";
-	char alias[] = " alias s1";
-	strcat(open, path);
-	strcat(open, alias);
-	strcat(play, path);
-	mciSendString(TEXT(open), NULL, 0, NULL);
-	mciSendString(TEXT(play), NULL, 0, NULL);
-	Sleep(180000); 
-	mciSendString(TEXT("close S1"), NULL, 0, NULL);
+	this->isPaused = false;
 }
 
-Player::Player(musicList *M) : LIST(M)
+void Player::pause()
+{
+	this->isPaused = true;
+}
+
+void Player::nextPlay()
+{
+	nowPlaying.setNowPlayingID(nowPlaying.getNowPlayingID() + 1);
+}
+
+void Player::previousPlay()
+{
+	nowPlaying.setNowPlayingID(nowPlaying.getNowPlayingID() - 1);
+}
+
+
+Player::Player(playlist M) : nowPlaying(M)
 {
 }

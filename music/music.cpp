@@ -1,10 +1,13 @@
 #include "music.h"
 #include <string>
 #include <string.h>
+
 #include <iostream>
 using namespace std;
 
 music::music(string N, string A, string K, string f) : Title(N), Author(A), Album(K), path(f) {}
+
+music::music() {}
 
 void music::setInfo(string title, string Author, string Album, string path)
 {

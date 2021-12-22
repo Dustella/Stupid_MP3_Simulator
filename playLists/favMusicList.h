@@ -3,7 +3,7 @@
 
 #include "playList.h"
 
-class LikeMusicList :public musicList{
+class LikeMusicList :public playlist{
 private:
 	const string playListName="Favorites";
 	

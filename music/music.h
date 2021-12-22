@@ -2,12 +2,12 @@
 #define MUSIC_H
 #include <string>
 using namespace std;
-class musicList;
+class playlist;
 
 class music
 {
 
-    friend class musicList;
+    friend class playlist;
 #pragma region operatorOverride
     friend bool operator<(const music &, const music &);
     friend bool operator>(const music &, const music &);
@@ -17,6 +17,7 @@ class music
 
 public:
     music(string N, string A, string K, string f);
+    music();
 
     //  getter and setters
     string getAlbum() const;

@@ -1,22 +1,28 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include"music.h"
-#include"playList.h"
+#include "music.h"
+#include "playList.h"
+#include "nowPlayinglist.h"
 
 using namespace std;
 
-class Player {
+class Player
+{
 public:
-	void Random_Play();
-	void Order_Play();
-	void Play(music &M);
-	Player(musicList *M);
+	void setPlaybackState(string mode);
+	void play();
+	void pause();
+	void nextPlay();
+	void previousPlay();
+
+	Player(playlist M);
 	Player();
+
 private:
-	musicList* LIST;
-
+	bool isPaused = true;
+	string playbackState = "loop";
+	nowPlayinglist nowPlaying;
 };
-
 
 #endif

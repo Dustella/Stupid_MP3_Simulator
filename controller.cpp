@@ -36,33 +36,33 @@ void getFiles(string ORING, vector<string> &files)
 {
     // cout<<"hhhh"<<endl;
     long hFile = 0;
-    //ÎÄ¼þÐÅÏ¢£¬ÉùÃ÷Ò»¸ö´æ´¢ÎÄ¼þÐÅÏ¢µÄ½á¹¹Ìå
+    //ï¿½Ä¼ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½æ´¢ï¿½Ä¼ï¿½ï¿½ï¿½Ï¢ï¿½Ä½á¹¹ï¿½ï¿½
     struct _finddata_t fileinfo;
-    string p;                                                                         //×Ö·û´®£¬´æ·ÅÂ·¾¶
-    if ((hFile = _findfirst(p.assign(ORING).append("\\*").c_str(), &fileinfo)) != -1) //Èô²éÕÒ³É¹¦£¬Ôò½øÈë
+    string p;                                                                         //ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½
+    if ((hFile = _findfirst(p.assign(ORING).append("\\*").c_str(), &fileinfo)) != -1) //ï¿½ï¿½ï¿½ï¿½ï¿½Ò³É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     {
         do
         {
-            //Èç¹ûÊÇÄ¿Â¼,µü´úÖ®£¨¼´ÎÄ¼þ¼ÐÄÚ»¹ÓÐÎÄ¼þ¼Ð£©
+            //ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼,ï¿½ï¿½ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ð£ï¿½
             if ((fileinfo.attrib & _A_SUBDIR))
             {
-                //ÎÄ¼þÃû²»µÈÓÚ"."&&ÎÄ¼þÃû²»µÈÓÚ".."
-                //ÅÐ¶ÏÊ±£¬Á½Õß¶¼ÒªºöÂÔ£¬²»È»¾ÍÎÞÏÞµÝ¹éÌø²»³öÈ¥ÁË£¡
+                //ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"."&&ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½".."
+                //ï¿½Ð¶ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ß¶ï¿½Òªï¿½ï¿½ï¿½Ô£ï¿½ï¿½ï¿½È»ï¿½ï¿½ï¿½ï¿½ï¿½ÞµÝ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½Ë£ï¿½
                 if (strcmp(fileinfo.name, ".") != 0 && strcmp(fileinfo.name, "..") != 0)
                     getFiles(p.assign(ORING).append("\\").append(fileinfo.name), files);
             }
-            //Èç¹û²»ÊÇ,¼ÓÈëÁÐ±í
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
             else
             {
                 files.push_back(p.assign(ORING).append("\\").append(fileinfo.name));
             }
         } while (_findnext(hFile, &fileinfo) == 0);
-        //_findcloseº¯Êý½áÊø²éÕÒ
+        //_findcloseï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         _findclose(hFile);
     }
 }
 
-void controller::CreateList(string ORING, string name, musicList *M)
+void controller::CreateList(string ORING, string name, playlist *M)
 {
     cout << ORING << " " << name << endl;
     cout << "CreatingList" << endl;
@@ -72,7 +72,7 @@ void controller::CreateList(string ORING, string name, musicList *M)
     readConfig(ORING, path);
     if (path.size() == 0)
     {
-        string s1 = "D:\\music\\ÌìÂ·-º«ºì.mp3";
+        string s1 = "D:\\music\\ï¿½ï¿½Â·-ï¿½ï¿½ï¿½ï¿½.mp3";
         path.push_back(s1);
     }
     // M->setListNumber(path.size());
@@ -80,16 +80,16 @@ void controller::CreateList(string ORING, string name, musicList *M)
     for (auto e : path)
     {
 
-        string music_name = "ÌìÂ·";
-        string author = "º«ºì";
+        string music_name = "ï¿½ï¿½Â·";
+        string author = "ï¿½ï¿½ï¿½ï¿½";
         music Mu(music_name, author, e);
     }
     M->sort_by_name(0, M->musiclist.size() - 1);
 }
 
-void controller::Operate_The_author(vector<Favour_anthor> &s, vector<musicList> &m, LikeMusicList &lm)
+void controller::Operate_The_author(vector<Favour_anthor> &s, vector<playlist> &m, LikeMusicList &lm)
 {
-    cout << "ÇëÊäÈëÄúÏ£Íû½øÐÐ²Ù×÷µÄ¸èÊÖµÄË÷Òý" << endl;
+    cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½" << endl;
     int i = 0;
     for (auto e : s)
     {
@@ -100,13 +100,13 @@ void controller::Operate_The_author(vector<Favour_anthor> &s, vector<musicList> 
     cin >> index;
     while (index > s.size())
     {
-        cout << "ÊäÈëµÄË÷Òý¹ý´ó£¬ÇëÖØÐÂÊäÈë" << endl;
+        cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" << endl;
         cin >> index;
     }
     (s[index]).Operate_The_author(s, m, lm);
 }
 
-void controller::Print_All_the_List(const vector<musicList> &The_lists)
+void controller::Print_All_the_List(const vector<playlist> &The_lists)
 {
     for (auto M : The_lists)
     {
@@ -120,27 +120,27 @@ void controller::Print_All_the_List(const vector<musicList> &The_lists)
 char controller::menu()
 {
     char f;
-    cout << "²é¿´ÏÖÓÐËùÓÐ¸èµ¥¾ßÌåÇé¿öÇëÊäÈë1" << endl;
-    cout << "±ê¼ÇÏ²»¶µÄ¸èÇúÇëÊäÈë2" << endl;
-    cout << "²é¿´Ï²»¶µÄ¸èÇúÇëÊäÈë3" << endl;
-    cout << "ºÏ²¢¸èµ¥ÇëÊäÈë4" << endl;
-    cout << "¶ÔÓÚÌØ¶¨¸èµ¥½øÐÐ²Ù×÷ÇëÊäÈë5" << endl;
-    cout << "²Ù×÷Ï²»¶µÄ¸èÇúÇëÊäÈë6" << endl;
-    cout << "´´½¨Ï²»¶µÄ¸èÊÖÇëÊäÈë7" << endl;
-    cout << "¶Ô¸èÊÖ½øÐÐ²Ù×÷ÊäÈë8" << endl;
-    cout << "²é¿´ËùÓÐ¸èÇúÊýÄ¿ÇëÊäÈë9" << endl;
-    cout << "´ò¿ª²¥·ÅÆ÷²¥·ÅÒôÀÖÊäÈëo" << endl;
-    cout << "ÍË³öÊäÈë'q" << endl;
+    cout << "ï¿½é¿´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¸èµ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1" << endl;
+    cout << "ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½2" << endl;
+    cout << "ï¿½é¿´Ï²ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½3" << endl;
+    cout << "ï¿½Ï²ï¿½ï¿½èµ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½4" << endl;
+    cout << "ï¿½ï¿½ï¿½ï¿½ï¿½Ø¶ï¿½ï¿½èµ¥ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½5" << endl;
+    cout << "ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½6" << endl;
+    cout << "ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½7" << endl;
+    cout << "ï¿½Ô¸ï¿½ï¿½Ö½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½8" << endl;
+    cout << "ï¿½é¿´ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½9" << endl;
+    cout << "ï¿½ò¿ª²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½o" << endl;
+    cout << "ï¿½Ë³ï¿½ï¿½ï¿½ï¿½ï¿½'q" << endl;
     cin >> f;
     return f;
 }
 
-void controller::init(LikeMusicList &LM, vector<Favour_anthor> set_of_anthor, vector<musicList> The_list_of_musicList)
-{ //³õÊ¼»¯²¥·ÅÁÐ±í
+void controller::init(LikeMusicList &LM, vector<Favour_anthor> set_of_anthor, vector<playlist> The_list_of_musicList)
+{ //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
     while (1)
     {
 
-        cout << "ÇëÊäÈë¸èµ¥µÄÂ·¾¶" << endl;
+        cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½èµ¥ï¿½ï¿½Â·ï¿½ï¿½" << endl;
         string path;
         cin >> path;
         vector<string> filename;
@@ -153,14 +153,14 @@ void controller::init(LikeMusicList &LM, vector<Favour_anthor> set_of_anthor, ve
         string name;
         // if (judge.size() == 2)
         // {
-        cout << "ÇëÊäÈë¸èµ¥µÄÃû³Æ" << endl;
+        cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½èµ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" << endl;
         cin >> name;
         // }
 
-        musicList M;
+        playlist M;
         CreateList(path, name, &M);
         The_list_of_musicList.push_back(M);
-        cout << "ÄúÊÇ·ñÏ£Íû¼ÌÐø´´½¨ÐÂµÄ¸èµ¥(y/n£©:";
+        cout << "ï¿½ï¿½ï¿½Ç·ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ¸èµ¥(y/nï¿½ï¿½:";
         char f;
         cin >> f;
         if (f == 'n')
@@ -172,27 +172,27 @@ void controller::init(LikeMusicList &LM, vector<Favour_anthor> set_of_anthor, ve
 
 void controller::welcome()
 {
-    cout << "=====================»¶Ó­Ê¹ÓÃÒôÀÖ¹ÜÀíÏµÍ³===================" << endl;
+    cout << "=====================ï¿½ï¿½Ó­Ê¹ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ÏµÍ³===================" << endl;
 }
-void controller::selection(char choice, LikeMusicList &LM, vector<Favour_anthor> &set_of_anthor, vector<musicList> &The_list_of_musicList)
+void controller::selection(char choice, LikeMusicList &LM, vector<Favour_anthor> &set_of_anthor, vector<playlist> &The_list_of_musicList)
 {
     switch (choice)
     {
     case '1':
     {
-        cout << "ÏÖÔÚÏµÍ³µ±ÖÐ¹²ÓÐ¸èµ¥" << musicList::getListNumber() << endl;
+        cout << "ï¿½ï¿½ï¿½ï¿½ÏµÍ³ï¿½ï¿½ï¿½Ð¹ï¿½ï¿½Ð¸èµ¥" << playlist::getListNumber() << endl;
         Print_All_the_List(The_list_of_musicList);
     }
     break;
     case '2':
     {
-        cout << "ÇëÊäÈëÄúÏ£Íû½øÐÐ±ê¼ÇµÄ¸èµ¥Ë÷Òý" << endl;
+        cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ÇµÄ¸èµ¥ï¿½ï¿½ï¿½ï¿½" << endl;
         int j;
         cin >> j;
 
-        musicList &M = The_list_of_musicList[j];
+        playlist &M = The_list_of_musicList[j];
 
-        cout << "ÇëÊäÈëÄãÏ²»¶µÄ¸èÇú,ÊäÈë-1ÍË³ö" << endl;
+        cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½-1ï¿½Ë³ï¿½" << endl;
         int index;
         while (cin >> index)
         {
@@ -207,7 +207,7 @@ void controller::selection(char choice, LikeMusicList &LM, vector<Favour_anthor>
     {
         if (LM.getNum() == 0)
         {
-            cout << "Ã»ÓÐÏ²»¶µÄ¸èÇú" << endl;
+            cout << "Ã»ï¿½ï¿½Ï²ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½" << endl;
             break;
         }
         LM.getFormattedList();
@@ -215,29 +215,29 @@ void controller::selection(char choice, LikeMusicList &LM, vector<Favour_anthor>
     break;
     case '4':
     {
-        cout << "ÇëÊäÈëÄúÏ£Íû½øÐÐºÏ²¢µÄÁ½¸ö¸èµ¥µÄË÷Òý" << endl;
+        cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½ÐºÏ²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½èµ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" << endl;
         int i, j;
         cin >> i >> j;
-        musicList M = The_list_of_musicList[i] + The_list_of_musicList[j];
+        playlist M = The_list_of_musicList[i] + The_list_of_musicList[j];
 
-        cout << "ÇëÄúÊýÐÂ¸èµ¥µÄÃû×Ö" << endl;
+        cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¸èµ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" << endl;
         string new_name;
         cin >> new_name;
         M.Reset_ListName(new_name);
 
         The_list_of_musicList.push_back(M);
         int new_index = The_list_of_musicList.size() - 1;
-        cout << "¸èµ¥ÒÑ¾­ºÏ²¢³É¹¦,ÐÂµÄ¸èµ¥µÄË÷ÒýÊÇ" << new_index << endl;
+        cout << "ï¿½èµ¥ï¿½Ñ¾ï¿½ï¿½Ï²ï¿½ï¿½É¹ï¿½,ï¿½ÂµÄ¸èµ¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" << new_index << endl;
     }
     break;
     case '5':
     {
-        cout << "ÇëÊäÈëÄúÏ£Íû½øÐÐ²Ù×÷µÄ¸èµ¥Ë÷Òý" << endl;
+        cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½ï¿½ï¿½ï¿½Ð²ï¿½ï¿½ï¿½ï¿½Ä¸èµ¥ï¿½ï¿½ï¿½ï¿½" << endl;
         int index;
         cin >> index;
         while (index >= The_list_of_musicList.size())
         {
-            cout << "Ë÷Òý¹ý´ó£¬ÇëÖØÐÂÊäÈë" << endl;
+            cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" << endl;
             cin >> index;
         }
         The_list_of_musicList[index].Operate_the_List();
@@ -250,13 +250,13 @@ void controller::selection(char choice, LikeMusicList &LM, vector<Favour_anthor>
     break;
     case '7':
     {
-        cout << "ÇëÊäÈë¸èÊÖµÄÃû×Ö" << endl;
+        cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½" << endl;
         string name;
         cin >> name;
-        cout << "ÇëÊäÈë¸èÊÖµÄÐÔ±ð" << endl;
+        cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½Ô±ï¿½" << endl;
         string sex;
         cin >> sex;
-        cout << "ÇëÊäÈë¸èÊÖµÄÄêÁä" << endl;
+        cout << "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½ï¿½ï¿½ï¿½" << endl;
         int age;
         cin >> age;
         Favour_anthor F(name, sex, age, The_list_of_musicList, LM);
@@ -269,7 +269,7 @@ void controller::selection(char choice, LikeMusicList &LM, vector<Favour_anthor>
     break;
     case '9':
     {
-        cout << "ÏÖÔÚ³ÌÐòÖÐÒ»¹²ÓÐ¸èÇú" << music::Music_number() << "Ê×" << endl;
+        cout << "ï¿½ï¿½ï¿½Ú³ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ð¸ï¿½ï¿½ï¿½" << music::Music_number() << "ï¿½ï¿½" << endl;
     }
     case 'o':
     {
@@ -284,12 +284,12 @@ int main()
     controller ctl;
     LikeMusicList LM;
     vector<Favour_anthor> set_of_anthor;
-    vector<musicList> The_list_of_musicList;
+    vector<playlist> The_list_of_musicList;
 
     ctl.welcome();
-    // ³õÊ¼»¯¿ØÖÆÆ÷Àà
+    // ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     ctl.init(LM, set_of_anthor, The_list_of_musicList);
-    // ³õÊ¼»¯²¥·ÅÁÐ±í
+    // ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð±ï¿½
     char mode = ctl.menu();
     while (mode != 'q')
     {
@@ -297,7 +297,7 @@ int main()
         mode = ctl.menu();
     }
 
-    cout << "»¶Ó­ÔÙ´ÎÊ¹ÓÃ!" << endl;
+    cout << "ï¿½ï¿½Ó­ï¿½Ù´ï¿½Ê¹ï¿½ï¿½!" << endl;
 
     return 0;
 }
