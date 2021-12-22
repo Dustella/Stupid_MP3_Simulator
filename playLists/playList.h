@@ -16,31 +16,26 @@ class musicList : public List
     friend class WIll_Play_List;
 
 private:
-
-    int musicNumber = 0;   //记录这个歌单中歌曲的数量
-    string playListName;       //歌单的名字
+    int totalMusicNum = 0;   //记录这个歌单中歌曲的数量
+    string playListName;     //歌单的名字
     vector<music> musiclist; //存放歌曲
 
 public:
-
     musicList(){};
     musicList(string playListName, vector<music> Mlist);
     musicList(const musicList &list); //复制构造函数
-    musicList(vector<music> Mlist);
-
-    void setListName(string a);
-    string getListName() const; // 显示播放列表名字
-    string getFormattedList();   //显示这个歌单中所有歌曲的名字
-
 
     bool append(music M);        //增加歌曲
     bool pop(string music_name); //删除歌曲
-    int getNum();
+    int length();                //得到长度
+
+    void setListName(string a);
+    string getListName() const; // 显示播放列表名字
+    string getFormattedList();  //显示这个歌单中所有歌曲的名字
+
 
     vector<music> searchByAuthor(string author_name);
     vector<music> searchByTitle(string name);
-
-
 };
 
 #endif // MUSICPLAYER_MUSICLIST_H

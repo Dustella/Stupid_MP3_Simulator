@@ -62,4 +62,19 @@ string music::getAuthor() const { return Author; }
 
 string music::getAlbum() const { return Album; }
 
+void music::setPath(string path)
+{
+    this->path = path;
+}
+
+void music::setTitle(string title) { this->Title = title; }
+
+void music::setAuthor(string author) { this->Author = author; }
+
+void music::setAlbum(string album) { this->Album = album; }
+
+void music::setLiked() { this->isLiked = true; }
+
+void music::setUnliked() { this->isLiked = false; }
+
 #pragma endregion getSet

@@ -6,52 +6,48 @@
 #include <set>
 using namespace std;
 
+#pragma region constructor
 
 musicList::musicList(const musicList &list)
 { //复制歌单
     playListName = list.playListName;
-    musicNumber = list.musicNumber;
+    totalMusicNum = list.totalMusicNum;
     for (auto e : list.musiclist)
     {
         musiclist.push_back(e);
     }
 }
 
-string musicList::getFormattedList()
-{
-    cout.width(40);
-    cout << "Name of musics";
-    cout.width(40);
-    cout << "Author of the music";
-    cout << endl;
-    for (int i = 0; i < musicNumber; i++)
-    {
-        cout << i + 1 << " ";
-        string name_of_music = musiclist[i].getTitle();
-        string author_of_music = musiclist[i].getAuthor();
-        cout.width(40);
-        cout << name_of_music;
-        cout.width(40);
-        cout << author_of_music;
-        cout << endl;
-    }
-}
-
 musicList::musicList(string playListName, vector<music> Mlist)
 { //构造函数
     this->playListName = playListName;
-    musicNumber = Mlist.size();
-    for (int i = 0; i < musicNumber; i++)
+    totalMusicNum = Mlist.size();
+    for (int i = 0; i < totalMusicNum; i++)
     {
         musiclist.push_back(Mlist[i]);
     }
 }
 
+#pragma endregion constructor
+
+string musicList::getFormattedList()
+{
+    string result = "";
+    result += "Name of musics\n";
+    result += "Author of the music\n";
+    for (int i = 0; i < totalMusicNum; i++)
+    {
+        cout << i + 1 << " ";
+        result += musiclist[i].getTitle() + "\n";
+        result += musiclist[i].getAuthor() + "\n";
+    }
+}
 
 #pragma region operaterOverrides
 musicList operator+(musicList &list1, musicList &list2)
 { //合并歌单
     musicList list3;
+
     list3.playListName = list1.playListName + " and " + list2.playListName;
     for (auto e : list1.musiclist)
     {
@@ -65,13 +61,11 @@ musicList operator+(musicList &list1, musicList &list2)
         list3.musiclist.push_back(e);
     }
 
-    list3.musicNumber = list3.musiclist.size();
+    list3.totalMusicNum = list3.musiclist.size();
     return list3;
 }
 
 #pragma endregion operatorOverride
-
-
 
 bool musicList::append(music M)
 {
@@ -81,7 +75,7 @@ bool musicList::append(music M)
             return false;
     }
     musiclist.push_back(M);
-    musicNumber++;
+    totalMusicNum++;
     return true;
 }
 
@@ -92,30 +86,27 @@ void musicList::setListName(string a)
 
 bool musicList::pop(string music_name)
 {
-    for (int i = 0; i < musicNumber; i++)
+    for (int i = 0; i < totalMusicNum; i++)
     {
         if (musiclist[i].getTitle() == music_name)
         {
             musiclist.erase(musiclist.begin() + i);
-            musicNumber--;
+            totalMusicNum--;
             return true;
         }
     }
     return false;
 }
 
-
 string musicList::getListName() const
 {
     return playListName;
 }
 
-
-int musicList::getNum()
+int musicList::length()
 {
     return sizeof(musiclist);
 }
-
 
 vector<music> musicList::searchByAuthor(string autherName)
 {
@@ -141,6 +132,5 @@ vector<music> musicList::searchByTitle(string titleName)
             result.push_back(e);
         }
     }
-
+    return result;
 }
-

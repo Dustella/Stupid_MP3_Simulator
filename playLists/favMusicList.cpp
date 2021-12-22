@@ -1,4 +1,4 @@
-#include "LikeMusicList.h"
+#include "favMusicList.h"
 LikeMusicList::LikeMusicList(vector<music> MList)
 {
 	for(auto e:MList)
@@ -7,7 +7,7 @@ LikeMusicList::LikeMusicList(vector<music> MList)
 			e.liked();
 		musiclist.push_back(e);
 	}
-	music_number=MList.size();
+	totalMusicNum=MList.size();
 }
 bool LikeMusicList::append(music M){//���Ӹ���
 	for(auto e:musiclist)
@@ -17,17 +17,17 @@ bool LikeMusicList::append(music M){//���Ӹ���
 		}
 	M.liked();
 	musiclist.push_back(M);
-	music_number++;
+	totalMusicNum++;
 	return true;
 }
 bool LikeMusicList::pop(string music_name) {
-	for(int i=0;i<music_number;i++)
+	for(int i=0;i<totalMusicNum;i++)
 		{
 			if(musiclist[i].getName()==music_name)
 				{
 					musiclist[i].liked();
 					musiclist.erase(musiclist.begin()+i);
-					music_number--;
+					totalMusicNum--;
 					return true;
 				}
 		}
@@ -36,6 +36,6 @@ bool LikeMusicList::pop(string music_name) {
 int LikeMusicList:: getNum(){
 	return musiclist.size();
 }
-string LikeMusicList:: showListName(){
-	return list_name;
+string LikeMusicList:: getListName(){
+	return playListName;
 }
