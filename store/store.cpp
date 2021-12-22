@@ -24,6 +24,7 @@ vector<playlist> store::getAllPlaylists()
         if (data.Get(playlistName, playlistObject))
         {
             playlist tmp;
+            tmp.setListName(playlistName);
             for (int i = 0; i < data[playlistName].GetArraySize(); i++)
             {
                 string Title;
@@ -99,21 +100,21 @@ void store::syncPlaylist(playlist ls)
     }
 }
 
-int main()
-{
+// int main()
+// {
 
-    music m1("la", "la", "la", "");
-    music m2("la1", "la", "la", "");
-    music m3("la12", "la", "la", "");
-    playlist la;
-    la.append(m1);
-    la.append(m2);
-    la.append(m3);
-    la.setListName("laa");
-    store st;
-    // st.addPlaylist(la);
-    st.syncPlaylist(la);
-    st.writeStore();
-    st.getAllPlaylists();
-    cout << st.data.ToFormattedString() << endl;
-}
+//     music m1("la", "la", "la", "");
+//     music m2("la1", "la", "la", "");
+//     music m3("la12", "la", "la", "");
+//     playlist la;
+//     la.append(m1);
+//     la.append(m2);
+//     la.append(m3);
+//     la.setListName("laa");
+//     store st;
+//     // st.addPlaylist(la);
+//     st.syncPlaylist(la);
+//     st.writeStore();
+//     st.getAllPlaylists();
+//     cout << st.data.ToFormattedString() << endl;
+// }

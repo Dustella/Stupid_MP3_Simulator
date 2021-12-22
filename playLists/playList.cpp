@@ -1,3 +1,5 @@
+
+
 #include "playList.h"
 #include <iostream>
 #include <string>
@@ -31,15 +33,17 @@ playlist::playlist(string playListName, vector<music> Mlist)
 
 string playlist::getFormattedList()
 {
-    string result = "";
-    result += "Name of musics\n";
-    result += "Author of the music\n";
+    string result = "No. ";
+    result += "Title    ";
+    result += "Album\n";
+    result += "----------------------------";
     for (int i = 0; i < totalMusicNum; i++)
     {
-        cout << i + 1 << " ";
-        result += musiclist[i].getTitle() + "\n";
-        result += musiclist[i].getAuthor() + "\n";
+        result += to_string(i + 1) + " ";
+        result += musiclist[i].getTitle() + " ";
+        result += musiclist[i].getAlbum() + "\n";
     }
+    result += "----------------------------";
     return result;
 }
 

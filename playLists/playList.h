@@ -6,7 +6,6 @@
 #include <vector>
 #include <string>
 
-class WIll_Play_List;
 class Player;
 class playlist : public List
 {
@@ -14,7 +13,6 @@ class playlist : public List
     friend void CreateList(string path, string name, playlist *M);
     friend class Player;
     friend playlist operator+(playlist &list1, playlist &list2); //用于合并歌单
-    friend class WIll_Play_List;
 
 private:
     int totalMusicNum = 0; //记录这个歌单中歌曲的数量

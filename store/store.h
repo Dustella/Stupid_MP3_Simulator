@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <fstream>
-#include "../playLists/playList.cpp"
+#include "../playLists/nowPlayinglist.cpp"
 #include "../utils/CJsonObject.cpp"
 
 using namespace std;
