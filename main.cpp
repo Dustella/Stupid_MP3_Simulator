@@ -11,7 +11,7 @@
 
 using namespace std;
 
-//ÔÚÀàunixÏµÍ³ÏÂ
+//åœ¨ç±»unixç³»ç»Ÿä¸‹
 // #include <sys/types.h>
 // #include <dirent.h>
 
@@ -31,37 +31,37 @@ using namespace std;
 //     closedir(pDir);
 // }
 
-// ÔÚwindowsÏµÍ³ÏÂ
+// åœ¨windowsç³»ç»Ÿä¸‹
 #include <io.h>
 
 void getFiles(string path, vector<string> &files)
 {
-    //ÎÄ¼ş¾ä±ú
+    //æ–‡ä»¶å¥æŸ„
     long hFile = 0;
-    //ÎÄ¼şĞÅÏ¢£¬ÉùÃ÷Ò»¸ö´æ´¢ÎÄ¼şĞÅÏ¢µÄ½á¹¹Ìå
+    //æ–‡ä»¶ä¿¡æ¯ï¼Œå£°æ˜ä¸€ä¸ªå­˜å‚¨æ–‡ä»¶ä¿¡æ¯çš„ç»“æ„ä½“
     struct _finddata_t fileinfo;
-    string p;                                                                        //×Ö·û´®£¬´æ·ÅÂ·¾¶
-    if ((hFile = _findfirst(p.assign(path).append("\\*").c_str(), &fileinfo)) != -1) //Èô²éÕÒ³É¹¦£¬Ôò½øÈë
+    string p;                                                                        //å­—ç¬¦ä¸²ï¼Œå­˜æ”¾è·¯å¾„
+    if ((hFile = _findfirst(p.assign(path).append("\\*").c_str(), &fileinfo)) != -1) //è‹¥æŸ¥æ‰¾æˆåŠŸï¼Œåˆ™è¿›å…¥
     {
         do
         {
-            //Èç¹ûÊÇÄ¿Â¼,µü´úÖ®£¨¼´ÎÄ¼ş¼ĞÄÚ»¹ÓĞÎÄ¼ş¼Ğ£©
+            //å¦‚æœæ˜¯ç›®å½•,è¿­ä»£ä¹‹ï¼ˆå³æ–‡ä»¶å¤¹å†…è¿˜æœ‰æ–‡ä»¶å¤¹ï¼‰
             if ((fileinfo.attrib & _A_SUBDIR))
             {
-                //ÎÄ¼şÃû²»µÈÓÚ"."&&ÎÄ¼şÃû²»µÈÓÚ".."
-                //.±íÊ¾µ±Ç°Ä¿Â¼
-                //..±íÊ¾µ±Ç°Ä¿Â¼µÄ¸¸Ä¿Â¼
-                //ÅĞ¶ÏÊ±£¬Á½Õß¶¼ÒªºöÂÔ£¬²»È»¾ÍÎŞÏŞµİ¹éÌø²»³öÈ¥ÁË£¡
+                //æ–‡ä»¶åä¸ç­‰äº"."&&æ–‡ä»¶åä¸ç­‰äº".."
+                //.è¡¨ç¤ºå½“å‰ç›®å½•
+                //..è¡¨ç¤ºå½“å‰ç›®å½•çš„çˆ¶ç›®å½•
+                //åˆ¤æ–­æ—¶ï¼Œä¸¤è€…éƒ½è¦å¿½ç•¥ï¼Œä¸ç„¶å°±æ— é™é€’å½’è·³ä¸å‡ºå»äº†ï¼
                 if (strcmp(fileinfo.name, ".") != 0 && strcmp(fileinfo.name, "..") != 0)
                     getFiles(p.assign(path).append("\\").append(fileinfo.name), files);
             }
-            //Èç¹û²»ÊÇ,¼ÓÈëÁĞ±í
+            //å¦‚æœä¸æ˜¯,åŠ å…¥åˆ—è¡¨
             else
             {
                 files.push_back(p.assign(path).append("\\").append(fileinfo.name));
             }
         } while (_findnext(hFile, &fileinfo) == 0);
-        //_findcloseº¯Êı½áÊø²éÕÒ
+        //_findcloseå‡½æ•°ç»“æŸæŸ¥æ‰¾
         _findclose(hFile);
     }
 }
@@ -96,7 +96,7 @@ void CreateList(string path, string name, musicList *M)
 
 void Operate_The_author(vector<Favour_anthor> &s, vector<musicList> &m, LikeMusicList &lm)
 {
-    cout << "ÇëÊäÈëÄúÏ£Íû½øĞĞ²Ù×÷µÄ¸èÊÖµÄË÷Òı" << endl;
+    cout << "è¯·è¾“å…¥æ‚¨å¸Œæœ›è¿›è¡Œæ“ä½œçš„æ­Œæ‰‹çš„ç´¢å¼•" << endl;
     int i = 0;
     for (auto e : s)
     {
@@ -107,7 +107,7 @@ void Operate_The_author(vector<Favour_anthor> &s, vector<musicList> &m, LikeMusi
     cin >> index;
     while (index > s.size())
     {
-        cout << "ÊäÈëµÄË÷Òı¹ı´ó£¬ÇëÖØĞÂÊäÈë" << endl;
+        cout << "è¾“å…¥çš„ç´¢å¼•è¿‡å¤§ï¼Œè¯·é‡æ–°è¾“å…¥" << endl;
         cin >> index;
     }
     (s[index]).Operate_The_author(s, m, lm);
@@ -127,13 +127,13 @@ void Print_All_the_List(const vector<musicList> &The_lists)
 int main()
 {
     LikeMusicList LM;
-    cout << "=====================»¶Ó­Ê¹ÓÃÒôÀÖ¹ÜÀíÏµÍ³===================" << endl;
+    cout << "=====================æ¬¢è¿ä½¿ç”¨éŸ³ä¹ç®¡ç†ç³»ç»Ÿ===================" << endl;
     vector<Favour_anthor> set_of_anthor;
     vector<musicList> The_list_of_musicList;
     while (1)
     {
 
-        cout << "ÇëÊäÈë¸èµ¥µÄÂ·¾¶" << endl;
+        cout << "è¯·è¾“å…¥æ­Œå•çš„è·¯å¾„" << endl;
         string path;
         cin >> path;
         vector<string> filename;
@@ -146,13 +146,13 @@ int main()
         string name;
         if (judge.size() == 2)
         {
-            cout << "ÇëÊäÈë¸èµ¥µÄÃû³Æ" << endl;
+            cout << "è¯·è¾“å…¥æ­Œå•çš„åç§°" << endl;
             cin >> name;
         }
         musicList M;
         CreateList(path, name, &M);
         The_list_of_musicList.push_back(M);
-        cout << "ÄúÊÇ·ñÏ£Íû¼ÌĞø´´½¨ĞÂµÄ¸èµ¥(y/n£©:";
+        cout << "æ‚¨æ˜¯å¦å¸Œæœ›ç»§ç»­åˆ›å»ºæ–°çš„æ­Œå•(y/nï¼‰:";
         char f;
         cin >> f;
         if (f == 'n')
@@ -162,16 +162,16 @@ int main()
     }
 
     char flag;
-    cout << "²é¿´ÏÖÓĞËùÓĞ¸èµ¥¾ßÌåÇé¿öÇëÊäÈë1" << endl;
-    cout << "±ê¼ÇÏ²»¶µÄ¸èÇúÇëÊäÈë2" << endl;
-    cout << "²é¿´Ï²»¶µÄ¸èÇúÇëÊäÈë3" << endl;
-    cout << "ºÏ²¢¸èµ¥ÇëÊäÈë4" << endl;
-    cout << "¶ÔÓÚÌØ¶¨¸èµ¥½øĞĞ²Ù×÷ÇëÊäÈë5" << endl;
-    cout << "²Ù×÷Ï²»¶µÄ¸èÇúÇëÊäÈë6" << endl;
-    cout << "´´½¨Ï²»¶µÄ¸èÊÖÇëÊäÈë7" << endl;
-    cout << "¶Ô¸èÊÖ½øĞĞ²Ù×÷ÊäÈë8" << endl;
-    cout << "²é¿´ËùÓĞ¸èÇúÊıÄ¿ÇëÊäÈë9" << endl;
-    cout << "ÍË³öÊäÈë'q" << endl;
+    cout << "æŸ¥çœ‹ç°æœ‰æ‰€æœ‰æ­Œå•å…·ä½“æƒ…å†µè¯·è¾“å…¥1" << endl;
+    cout << "æ ‡è®°å–œæ¬¢çš„æ­Œæ›²è¯·è¾“å…¥2" << endl;
+    cout << "æŸ¥çœ‹å–œæ¬¢çš„æ­Œæ›²è¯·è¾“å…¥3" << endl;
+    cout << "åˆå¹¶æ­Œå•è¯·è¾“å…¥4" << endl;
+    cout << "å¯¹äºç‰¹å®šæ­Œå•è¿›è¡Œæ“ä½œè¯·è¾“å…¥5" << endl;
+    cout << "æ“ä½œå–œæ¬¢çš„æ­Œæ›²è¯·è¾“å…¥6" << endl;
+    cout << "åˆ›å»ºå–œæ¬¢çš„æ­Œæ‰‹è¯·è¾“å…¥7" << endl;
+    cout << "å¯¹æ­Œæ‰‹è¿›è¡Œæ“ä½œè¾“å…¥8" << endl;
+    cout << "æŸ¥çœ‹æ‰€æœ‰æ­Œæ›²æ•°ç›®è¯·è¾“å…¥9" << endl;
+    cout << "é€€å‡ºè¾“å…¥'q" << endl;
     while (flag != 'q')
     {
 
@@ -180,19 +180,19 @@ int main()
         {
         case '1':
         {
-            cout << "ÏÖÔÚÏµÍ³µ±ÖĞ¹²ÓĞ¸èµ¥" << musicList::List_number() << endl;
+            cout << "ç°åœ¨ç³»ç»Ÿå½“ä¸­å…±æœ‰æ­Œå•" << musicList::List_number() << endl;
             Print_All_the_List(The_list_of_musicList);
         }
         break;
         case '2':
         {
-            cout << "ÇëÊäÈëÄúÏ£Íû½øĞĞ±ê¼ÇµÄ¸èµ¥Ë÷Òı" << endl;
+            cout << "è¯·è¾“å…¥æ‚¨å¸Œæœ›è¿›è¡Œæ ‡è®°çš„æ­Œå•ç´¢å¼•" << endl;
             int j;
             cin >> j;
 
             musicList &M = The_list_of_musicList[j];
 
-            cout << "ÇëÊäÈëÄãÏ²»¶µÄ¸èÇú,ÊäÈë-1ÍË³ö" << endl;
+            cout << "è¯·è¾“å…¥ä½ å–œæ¬¢çš„æ­Œæ›²,è¾“å…¥-1é€€å‡º" << endl;
             int index;
             while (cin >> index)
             {
@@ -207,7 +207,7 @@ int main()
         {
             if (LM.getNum() == 0)
             {
-                cout << "Ã»ÓĞÏ²»¶µÄ¸èÇú" << endl;
+                cout << "æ²¡æœ‰å–œæ¬¢çš„æ­Œæ›²" << endl;
                 break;
             }
             LM.getFormattedList();
@@ -215,29 +215,29 @@ int main()
         break;
         case '4':
         {
-            cout << "ÇëÊäÈëÄúÏ£Íû½øĞĞºÏ²¢µÄÁ½¸ö¸èµ¥µÄË÷Òı" << endl;
+            cout << "è¯·è¾“å…¥æ‚¨å¸Œæœ›è¿›è¡Œåˆå¹¶çš„ä¸¤ä¸ªæ­Œå•çš„ç´¢å¼•" << endl;
             int i, j;
             cin >> i >> j;
             musicList M = The_list_of_musicList[i] + The_list_of_musicList[j];
 
-            cout << "ÇëÄúÊıĞÂ¸èµ¥µÄÃû×Ö" << endl;
+            cout << "è¯·æ‚¨æ•°æ–°æ­Œå•çš„åå­—" << endl;
             string new_name;
             cin >> new_name;
             M.Reset_ListName(new_name);
 
             The_list_of_musicList.push_back(M);
             int new_index = The_list_of_musicList.size() - 1;
-            cout << "¸èµ¥ÒÑ¾­ºÏ²¢³É¹¦,ĞÂµÄ¸èµ¥µÄË÷ÒıÊÇ" << new_index << endl;
+            cout << "æ­Œå•å·²ç»åˆå¹¶æˆåŠŸ,æ–°çš„æ­Œå•çš„ç´¢å¼•æ˜¯" << new_index << endl;
         }
         break;
         case '5':
         {
-            cout << "ÇëÊäÈëÄúÏ£Íû½øĞĞ²Ù×÷µÄ¸èµ¥Ë÷Òı" << endl;
+            cout << "è¯·è¾“å…¥æ‚¨å¸Œæœ›è¿›è¡Œæ“ä½œçš„æ­Œå•ç´¢å¼•" << endl;
             int index;
             cin >> index;
             while (index >= The_list_of_musicList.size())
             {
-                cout << "Ë÷Òı¹ı´ó£¬ÇëÖØĞÂÊäÈë" << endl;
+                cout << "ç´¢å¼•è¿‡å¤§ï¼Œè¯·é‡æ–°è¾“å…¥" << endl;
                 cin >> index;
             }
             The_list_of_musicList[index].Operate_the_List();
@@ -250,13 +250,13 @@ int main()
         break;
         case '7':
         {
-            cout << "ÇëÊäÈë¸èÊÖµÄÃû×Ö" << endl;
+            cout << "è¯·è¾“å…¥æ­Œæ‰‹çš„åå­—" << endl;
             string name;
             cin >> name;
-            cout << "ÇëÊäÈë¸èÊÖµÄĞÔ±ğ" << endl;
+            cout << "è¯·è¾“å…¥æ­Œæ‰‹çš„æ€§åˆ«" << endl;
             string sex;
             cin >> sex;
-            cout << "ÇëÊäÈë¸èÊÖµÄÄêÁä" << endl;
+            cout << "è¯·è¾“å…¥æ­Œæ‰‹çš„å¹´é¾„" << endl;
             int age;
             cin >> age;
             Favour_anthor F(name, sex, age, The_list_of_musicList, LM);
@@ -269,13 +269,13 @@ int main()
         break;
         case '9':
         {
-            cout << "ÏÖÔÚ³ÌĞòÖĞÒ»¹²ÓĞ¸èÇú" << music::Music_number() << "Ê×" << endl;
+            cout << "ç°åœ¨ç¨‹åºä¸­ä¸€å…±æœ‰æ­Œæ›²" << music::Music_number() << "é¦–" << endl;
         }
         break;
         }
     }
 
-    cout << "»¶Ó­ÔÙ´ÎÊ¹ÓÃ!" << endl;
+    cout << "æ¬¢è¿å†æ¬¡ä½¿ç”¨!" << endl;
 
     return 0;
 }
