@@ -1,7 +1,3 @@
-//
-// Created by Mac on 2021/11/30.
-//
-
 #include "playList.h"
 #include "music.h"
 #include <iostream>
@@ -10,22 +6,15 @@
 #include <set>
 using namespace std;
 
-int musicList::list_number = 0;
 
 musicList::musicList(const musicList &list)
 { //复制歌单
-    list_name = list.list_name;
-    music_number = list.music_number;
+    playListName = list.playListName;
+    musicNumber = list.musicNumber;
     for (auto e : list.musiclist)
     {
         musiclist.push_back(e);
     }
-    list_number++;
-}
-
-int musicList::getListNumber()
-{ //显示歌单的函数
-    return list_number;
 }
 
 string musicList::getFormattedList()
@@ -35,7 +24,7 @@ string musicList::getFormattedList()
     cout.width(40);
     cout << "Author of the music";
     cout << endl;
-    for (int i = 0; i < music_number; i++)
+    for (int i = 0; i < musicNumber; i++)
     {
         cout << i + 1 << " ";
         string name_of_music = musiclist[i].getTitle();
@@ -48,21 +37,22 @@ string musicList::getFormattedList()
     }
 }
 
-musicList::musicList(string list_name, vector<music> Mlist)
+musicList::musicList(string playListName, vector<music> Mlist)
 { //构造函数
-    this->list_name = list_name;
-    music_number = Mlist.size();
-    for (int i = 0; i < music_number; i++)
+    this->playListName = playListName;
+    musicNumber = Mlist.size();
+    for (int i = 0; i < musicNumber; i++)
     {
         musiclist.push_back(Mlist[i]);
     }
-    list_number++;
 }
 
+
+#pragma region operaterOverrides
 musicList operator+(musicList &list1, musicList &list2)
 { //合并歌单
     musicList list3;
-    list3.list_name = list1.list_name + " and " + list2.list_name;
+    list3.playListName = list1.playListName + " and " + list2.playListName;
     for (auto e : list1.musiclist)
     {
         list3.musiclist.push_back(e);
@@ -75,14 +65,13 @@ musicList operator+(musicList &list1, musicList &list2)
         list3.musiclist.push_back(e);
     }
 
-    list3.music_number = list3.musiclist.size();
+    list3.musicNumber = list3.musiclist.size();
     return list3;
 }
 
-void musicList::Reset_ListName(string new_name)
-{
-    list_name = new_name;
-}
+#pragma endregion operatorOverride
+
+
 
 bool musicList::append(music M)
 {
@@ -92,200 +81,66 @@ bool musicList::append(music M)
             return false;
     }
     musiclist.push_back(M);
-    music_number++;
+    musicNumber++;
     return true;
-}
-
-void musicList::setListNumber(int a)
-{
-    list_number = a;
 }
 
 void musicList::setListName(string a)
 {
-    this->list_name = a;
+    this->playListName = a;
 }
 
 bool musicList::pop(string music_name)
 {
-    for (int i = 0; i < music_number; i++)
+    for (int i = 0; i < musicNumber; i++)
     {
         if (musiclist[i].getTitle() == music_name)
         {
             musiclist.erase(musiclist.begin() + i);
-            music_number--;
+            musicNumber--;
             return true;
         }
     }
     return false;
 }
-string musicList::showListName() const
+
+
+string musicList::getListName() const
 {
-    return list_name;
+    return playListName;
 }
+
+
 int musicList::getNum()
 {
     return sizeof(musiclist);
 }
-vector<string> musicList::SearchAuthor(string author_name)
+
+
+vector<music> musicList::searchByAuthor(string autherName)
 {
-    vector<string> Music;
+    vector<music> result;
     for (auto e : musiclist)
     {
-        if (e.getAuthor() == author_name)
+        if (e.getAuthor() == autherName)
         {
-            string name = e.getTitle();
-            Music.push_back(name);
+            result.push_back(e);
         }
     }
-    return Music;
+    return result;
 }
-bool musicList::search_music(string name)
+
+vector<music> musicList::searchByTitle(string titleName)
 {
-    int flag = 0;
-    set<string> author_name;
+    vector<music> result;
+
     for (auto e : musiclist)
     {
-        if (e.getTitle() == name)
+        if (e.getTitle() == titleName)
         {
-            author_name.insert(e.getAuthor());
-            flag = 1;
+            result.push_back(e);
         }
     }
-    if (flag)
-    {
-        cout.width(40);
-        cout << "歌曲名称"
-             << "作者" << endl;
-        for (auto e : author_name)
-        {
-            cout.widen(40);
-            cout << name << e << endl;
-        }
-        cout << "搜索成功" << endl;
-    }
-    else
-    {
-        cout << "没有您寻找的歌曲" << endl;
-    }
-    return flag;
+
 }
 
-void musicList::sort_by_name(int low, int high)
-{
-    if (low < high)
-    {
-        int i = low, j = high;
-        music x = musiclist[low];
-        while (i < j)
-        {
-            while (i < j && musiclist[j] > x)
-                j--;
-            if (i < j)
-                musiclist[i++] = musiclist[j];
-            while (i < j && musiclist[i] <= x)
-                i++;
-            if (i < j)
-                musiclist[j--] = musiclist[i];
-        }
-        musiclist[i] = x;
-        sort_by_name(low, i - 1);
-        sort_by_name(i + 1, high);
-    }
-}
-
-void musicList::Operate_the_List()
-{
-    cout << "欢迎使用歌单操作界面" << endl;
-    cout << "输入1查看单前歌单的全部歌曲" << endl;
-    cout << "输入2进入歌曲检索界面" << endl;
-    cout << "输入3进入歌手检索界面" << endl;
-    cout << "输入4进入歌曲数量查看界面" << endl;
-    cout << "输入5重新设置歌名" << endl;
-    cout << "输入6进行歌曲添加" << endl;
-    cout << "输入7进行歌曲删除" << endl;
-    cout << "输入0结束本项功能" << endl;
-    int choose;
-    cin >> choose;
-    int flag = 1;
-    while (flag)
-    {
-        switch (choose)
-        {
-        case 1:
-        {
-            getFormattedList();
-        }
-        break;
-        case 2:
-        {
-            cout << "请输入进行检索的歌曲名" << endl;
-            string name;
-            cin >> name;
-            search_music(name);
-        }
-        break;
-        case 3:
-        {
-            cout << "请输入需要进行检索的歌手名" << endl;
-            string name;
-            cin >> name;
-            vector<string> s;
-            s = SearchAuthor(name);
-            if (s.size() == 0)
-            {
-                cout << "没有这位歌手的作品" << endl;
-            }
-            else
-            {
-                for (auto e : s)
-                {
-                    cout.width(30);
-                    cout << e << endl;
-                }
-            }
-        }
-        break;
-        case 4:
-        {
-            cout << getNum() << endl;
-        }
-        break;
-        case 5:
-        {
-            cout << "请输入歌单的新名字" << endl;
-            string new_name;
-            cin >> new_name;
-            Reset_ListName(new_name);
-        }
-        break;
-        case 6:
-        {
-            cout << "请输入歌曲名" << endl;
-            string name;
-            cin >> name;
-            cout << "请输入作者" << endl;
-            string author;
-            cin >> author;
-            music Mu(name, author, nullptr);
-            append(Mu);
-        }
-        break;
-        case 7:
-        {
-            cout << "请输入您需要删除的歌曲" << endl;
-            string name;
-            cin >> name;
-            pop(name);
-        }
-        break;
-        case 0:
-        {
-            flag = 0;
-        }
-        break;
-        }
-
-        cin >> flag;
-    }
-}

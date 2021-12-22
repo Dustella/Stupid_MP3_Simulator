@@ -20,9 +20,9 @@
         ""
       ],
       "stopAtEntry": false,
-      "cwd": "c:/Users/Dustella/Desktop/Music_Player",
+      "cwd": "c:/Users/fdnoa/Desktop/Player_Final",
       "environment": [],
-      "program": "c:/Users/Dustella/Desktop/Music_Player/build/Debug/outDebug",
+      "program": "c:/Users/fdnoa/Desktop/Player_Final/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/MingW/bin/gdb.exe",
