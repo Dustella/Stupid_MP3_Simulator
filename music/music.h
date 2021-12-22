@@ -32,6 +32,8 @@ public:
     void setAlbum(string album);
     void setLiked();
     void setUnliked();
+
+    string constuctInfo();
     //   getter and setters
 
 private:

@@ -80,4 +80,9 @@ void music::setLiked() { this->Liked = true; }
 
 void music::setUnliked() { this->Liked = false; }
 
+string music::constuctInfo()
+{
+    
+}
+
 #pragma endregion getSet

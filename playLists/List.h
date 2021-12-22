@@ -1,7 +1,8 @@
 #ifndef LIST_H
 #define LIST_H
-#include "music.h"
+#include "../music/music.h"
 #include <string>
+#include <vector>
 
 class List
 {

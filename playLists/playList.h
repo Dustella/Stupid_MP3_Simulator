@@ -1,7 +1,7 @@
 #ifndef PLAYLIST_H
 #define PLAYLIST_H
 
-#include "music.h"
+#include "../music/music.h"
 #include "List.h"
 #include <vector>
 #include <string>

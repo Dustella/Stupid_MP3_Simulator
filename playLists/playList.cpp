@@ -1,5 +1,5 @@
 #include "playList.h"
-#include "music.h"
+#include "../music/music.h"
 #include <iostream>
 #include <string>
 #include <vector>
