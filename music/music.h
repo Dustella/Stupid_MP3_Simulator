@@ -38,7 +38,7 @@ private:
     string Author; // 作者
     string Album;
     string path = ""; // 音乐位置
-    bool isLiked; //
+    bool Liked; //
 };
 
 #endif

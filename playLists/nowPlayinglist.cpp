@@ -4,4 +4,9 @@ int nowPlayinglist::getNowPlayingID() const { return nowPlayinglist::nowPlayingI
 
 void nowPlayinglist::setNowPlayingID(int nowPlayingID) { this->nowPlayingID = nowPlayingID; }
 
-music nowPlayinglist::getNowPlayingMusic()const { return nowPlayinglist::nowPlayingMusic; }
+music nowPlayinglist::getNowPlayingMusic() const { return nowPlayinglist::nowPlayingMusic; }
+
+void nowPlayinglist::insertNextPlaying(music newPlaying)
+{
+    musicList::musiclist.insert(nowPlayingID, newPlaying);
+}

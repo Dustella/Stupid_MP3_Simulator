@@ -73,8 +73,8 @@ void music::setAuthor(string author) { this->Author = author; }
 
 void music::setAlbum(string album) { this->Album = album; }
 
-void music::setLiked() { this->isLiked = true; }
+void music::setLiked() { this->Liked = true; }
 
-void music::setUnliked() { this->isLiked = false; }
+void music::setUnliked() { this->Liked = false; }
 
 #pragma endregion getSet

@@ -43,6 +43,11 @@ string musicList::getFormattedList()
     }
 }
 
+void musicList::insert(int pos, music ins)
+{
+    musiclist.insert(musiclist.begin() + pos, ins);
+}
+
 #pragma region operaterOverrides
 musicList operator+(musicList &list1, musicList &list2)
 { //合并歌单
@@ -84,10 +89,11 @@ void musicList::updateLength()
     this->totalMusicNum = musiclist.size();
 }
 
-void musicList::swap(int a, int b){
-    music tmp=musiclist[a];
-    musiclist[a]=musiclist[b];
-    musiclist[b]=tmp;
+void musicList::swap(int a, int b)
+{
+    music tmp = musiclist[a];
+    musiclist[a] = musiclist[b];
+    musiclist[b] = tmp;
 }
 
 void musicList::setListName(string a)

@@ -20,14 +20,15 @@ private:
 
     int totalMusicNum = 0;   //记录这个歌单中歌曲的数量
     string playListName;     //歌单的名字
-    vector<music> musiclist; //存放歌曲
 
 public:
+    vector<music> musiclist; //存放歌曲
     musicList(){};
     musicList(string playListName, vector<music> Mlist);
     musicList(const musicList &list); //复制构造函数
 
     bool append(music M);        //增加歌曲
+    void insert(int pos,music M); //
     bool pop(string music_name); //删除歌曲
     int length();                //得到长度
     void updateLength();
