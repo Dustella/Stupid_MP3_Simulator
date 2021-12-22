@@ -26,12 +26,29 @@ void Player::pause()
 
 void Player::nextPlay()
 {
-	nowPlaying.setNowPlayingID(nowPlaying.getNowPlayingID() + 1);
+	cout << nowPlaying.length() << endl;
+	if (nowPlaying.getNowPlayingID() == nowPlaying.length()-1)
+	{
+
+		nowPlaying.setNowPlayingID(0);
+	}
+	else
+	{
+		nowPlaying.setNowPlayingID(nowPlaying.getNowPlayingID() + 1);
+	}
 }
 
 void Player::previousPlay()
 {
-	nowPlaying.setNowPlayingID(nowPlaying.getNowPlayingID() - 1);
+	if (nowPlaying.getNowPlayingID() == 0)
+	{
+		nowPlaying.setNowPlayingID(nowPlaying.length());
+	}
+	else
+	{
+
+		nowPlaying.setNowPlayingID(nowPlaying.getNowPlayingID() - 1);
+	}
 }
 
 Player::Player(playlist M) : nowPlaying(M)
@@ -55,11 +72,11 @@ string Player::playingInfo()
 	info += nowPlaying.getNowPlayingMusic().getAlbum();
 	if (isPaused)
 	{
-		info += "\n isPaused";
+		info += "\nisPaused";
 	}
 	else
 	{
-		info += "\n isPlaying";
+		info += "\nisPlaying";
 	}
 	info += "\n================================\n";
 	return info;
@@ -67,11 +84,24 @@ string Player::playingInfo()
 
 int main()
 {
-	music m("la", "la", "la", "");
+	music m1("la", "la", "la", "");
+	music m2("la1", "la", "la", "");
+	music m3("la12", "la", "la", "");
 	playlist la;
-	la.append(m);
+	la.append(m1);
+	la.append(m2);
+	la.append(m3);
 	Player test(la);
-
+	test.play();
 	cout << test.playingInfo() << endl;
+	test.nextPlay();
+	cout << test.playingInfo() << endl;
+	test.nextPlay();
+	cout << test.playingInfo() << endl;
+	test.nextPlay();
+	cout << test.playingInfo() << endl;
+	test.nextPlay();
+	cout << test.playingInfo() << endl;
+
 	return 0;
 }

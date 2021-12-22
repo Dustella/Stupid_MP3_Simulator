@@ -131,7 +131,7 @@ string playlist::getListName() const
 
 int playlist::length()
 {
-    return sizeof(musiclist);
+    return musiclist.size();
 }
 
 vector<music> playlist::searchByAuthor(string autherName)
