@@ -22,6 +22,7 @@ string playControl::nowPlaying()
 
 void playControl::setNowPlayingList()
 {
+    system("clear");
     cout << "Choose a list to replace" << endl;
     lsctl.printAllLists();
     int a;
@@ -96,9 +97,3 @@ void playControl::welcome()
     }
 }
 
-int main()
-{
-    playControl ctl;
-
-    return 0;
-}

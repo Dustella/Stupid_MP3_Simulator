@@ -30,6 +30,7 @@ void playlistControl::printAllMusics(playlist a)
 
 void playlistControl::promotListOpt()
 {
+    system("clear");
     cout << "List Operations" << endl;
     cout << "================================" << endl;
     cout << "1. Back to main Menu" << endl;
@@ -69,6 +70,7 @@ void playlistControl::promotListOpt()
 
 void playlistControl::promotAddGuide()
 {
+    system("clear");
     cout << "Adding a new list" << endl;
     cout << "================================" << endl;
     cout << "Take a list name: " << endl;
@@ -87,6 +89,7 @@ void playlistControl::promotAddGuide()
 
 void playlistControl::addMusic(playlist &ls)
 {
+    system("clear");
     cout << "Adding Music to a list" << endl;
     cout << "================================" << endl;
     cout << "Input music Name, \'q\' to end" << endl;
@@ -115,6 +118,7 @@ void playlistControl::addMusic(playlist &ls)
 
 void playlistControl::removeMusic(playlist &ls)
 {
+    system("clear");
     cout << "Deleting Music from a list" << endl;
     cout << "================================" << endl;
     cout << "Input music Name, \'q\' to end" << endl;
@@ -134,6 +138,7 @@ void playlistControl::removeMusic(playlist &ls)
 
 void playlistControl::promotDeleteGuide()
 {
+    system("clear");
     cout << "Deleting lists" << endl;
     cout << "================================" << endl;
     printAllLists();
@@ -154,6 +159,7 @@ void playlistControl::promotDeleteGuide()
 
 void playlistControl::promotlistManager()
 {
+    system("clear");
     cout << "Select the list to manage" << endl;
     cout << "================================" << endl;
     refresh();
@@ -167,6 +173,7 @@ void playlistControl::promotlistManager()
 
 void playlistControl::ManageList(playlist &ls)
 {
+    system("clear");
     cout << "Manage " << ls.getListName() << endl;
     cout << "There are musics in the list" << endl;
     cout << "================================" << endl;

@@ -26,5 +26,16 @@
 			"Album":	"la",
 			"path":	"",
 			"Author":	"la"
+		}],
+	"BrandNew":	[{
+			"Title":	"good1",
+			"Album":	"lalala",
+			"path":	"",
+			"Author":	"good1"
+		}, {
+			"Title":	"good2",
+			"Album":	"lalala",
+			"path":	"",
+			"Author":	"good2"
 		}]
 }

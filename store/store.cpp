@@ -79,7 +79,7 @@ playlist store::getPlaylist(string name)
 
 void store::writeStore()
 {
-    ofstream OsWrite("../store.json");
+    ofstream OsWrite("./store.json");
     string content = data.ToFormattedString();
     OsWrite << content;
     OsWrite.close();
@@ -88,7 +88,7 @@ void store::writeStore()
 string store::fetchStore()
 {
     fstream musicJSON;
-    musicJSON.open("../store.json");
+    musicJSON.open("./store.json");
     ostringstream buf;
     char ch;
     while (musicJSON.get(ch) && buf)
