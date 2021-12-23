@@ -58,6 +58,11 @@ Player::Player(playlist M) : nowPlaying(M)
 
 void Player::setPlaylist(playlist ls)
 {
+	if(ls.length() == 0){
+		cout << "empty playlist" << endl;
+		music tmp("NULL","NULL","NULL","NULL");
+		ls.append(tmp);
+	}
 	nowPlaying.setPlaylist(ls);
 }
 

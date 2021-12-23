@@ -114,6 +114,9 @@ void store::syncPlaylist(playlist ls)
         cout << "is" << endl;
 
         data.AddEmptySubArray(ls.getListName());
+    }else{
+        data.Delete(ls.getListName());
+        data.AddEmptySubArray(ls.getListName());
     }
     for (int i = 0; i < ls.length(); i++)
     {
