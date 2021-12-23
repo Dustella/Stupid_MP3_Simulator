@@ -1,3 +1,5 @@
+#ifndef thestored
+#define thestored
 #include "store.h"
 #include "fstream"
 #include "sstream"
@@ -48,6 +50,31 @@ vector<playlist> store::getAllPlaylists()
     }
 
     return result;
+}
+
+playlist store::getPlaylist(string name)
+{
+    playlist tmp;
+    tmp.setListName(name);
+    for (int i = 0; i < data[name].GetArraySize(); i++)
+    {
+        string Title;
+        data[name][i].Get("Title", Title);
+
+        string Album;
+        data[name][i].Get("Album", Album);
+
+        string Author;
+        data[name][i].Get("Author", Author);
+
+        string path;
+        data[name][i].Get("Path", path);
+
+        music toAdd(Title, Author, Album, path);
+
+        tmp.append(toAdd);
+    }
+    return tmp;
 }
 
 void store::writeStore()
@@ -106,6 +133,8 @@ void store::deletePlaylist(string a)
     const string todel = a;
     data.Delete(todel);
 }
+
+#endif //
 
 // int main()
 // {

@@ -1,3 +1,5 @@
+#ifndef nowplayingrecord
+#define nowplayingrecord
 #include "nowPlayinglist.h"
 
 int nowPlayinglist::getNowPlayingID() 
@@ -31,3 +33,5 @@ nowPlayinglist::nowPlayinglist() : playlist()
 {
     this->nowPlayingID = 0;
 }
+
+#endif

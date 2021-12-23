@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "../playLists/nowPlayinglist.cpp"
+#include "../playLists/nowPlayinglist.h"
 
 using namespace std;
 

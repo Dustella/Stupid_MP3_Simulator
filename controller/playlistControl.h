@@ -6,14 +6,14 @@
 class playlistControl
 {
 private:
-    vector<playlist> allLists;
-    nowPlayinglist nowPlaying;
     store storage;
 
 public:
+    vector<playlist> allLists;
     void refresh();
 
     void promotListOpt();
+
     void promotAddGuide();
     void promotDeleteGuide();
     void promotlistManager();

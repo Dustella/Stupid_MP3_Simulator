@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "../playLists/nowPlayinglist.cpp"
 #include <vector>
 #include <string>
 #include <iostream>
@@ -27,7 +28,7 @@ void Player::pause()
 void Player::nextPlay()
 {
 	cout << nowPlaying.length() << endl;
-	if (nowPlaying.getNowPlayingID() == nowPlaying.length()-1)
+	if (nowPlaying.getNowPlayingID() == nowPlaying.length() - 1)
 	{
 
 		nowPlaying.setNowPlayingID(0);
@@ -42,7 +43,7 @@ void Player::previousPlay()
 {
 	if (nowPlaying.getNowPlayingID() == 0)
 	{
-		nowPlaying.setNowPlayingID(nowPlaying.length());
+		nowPlaying.setNowPlayingID(nowPlaying.length() - 1);
 	}
 	else
 	{
@@ -64,9 +65,10 @@ string Player::playingInfo()
 {
 	string info;
 	info += "================================\n";
-	info += "Title:";
+	info += "Now Playing: \n";
+	info += "Title: ";
 	info += nowPlaying.getNowPlayingMusic().getTitle();
-	info += "\nArtist:";
+	info += "\nArtist: ";
 	info += nowPlaying.getNowPlayingMusic().getAuthor();
 	info += "\nAlbum: ";
 	info += nowPlaying.getNowPlayingMusic().getAlbum();
@@ -82,26 +84,26 @@ string Player::playingInfo()
 	return info;
 }
 
-int main()
-{
-	music m1("la", "la", "la", "");
-	music m2("la1", "la", "la", "");
-	music m3("la12", "la", "la", "");
-	playlist la;
-	la.append(m1);
-	la.append(m2);
-	la.append(m3);
-	Player test(la);
-	test.play();
-	cout << test.playingInfo() << endl;
-	test.nextPlay();
-	cout << test.playingInfo() << endl;
-	test.nextPlay();
-	cout << test.playingInfo() << endl;
-	test.nextPlay();
-	cout << test.playingInfo() << endl;
-	test.nextPlay();
-	cout << test.playingInfo() << endl;
+// int main()
+// {
+// 	music m1("la", "la", "la", "");
+// 	music m2("la1", "la", "la", "");
+// 	music m3("la12", "la", "la", "");
+// 	playlist la;
+// 	la.append(m1);
+// 	la.append(m2);
+// 	la.append(m3);
+// 	Player test(la);
+// 	test.play();
+// 	cout << test.playingInfo() << endl;
+// 	test.nextPlay();
+// 	cout << test.playingInfo() << endl;
+// 	test.nextPlay();
+// 	cout << test.playingInfo() << endl;
+// 	test.nextPlay();
+// 	cout << test.playingInfo() << endl;
+// 	test.nextPlay();
+// 	cout << test.playingInfo() << endl;
 
-	return 0;
-}
+// 	return 0;
+// }

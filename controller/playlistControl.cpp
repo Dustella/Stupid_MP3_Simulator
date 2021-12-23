@@ -51,10 +51,12 @@ void playlistControl::promotListOpt()
     }
     case 3:
     {
+        promotlistManager();
         break;
     }
     case 4:
     {
+        promotDeleteGuide();
         break;
     }
     default:
@@ -192,11 +194,4 @@ void playlistControl::ManageList(playlist &ls)
     }
     storage.syncPlaylist(ls);
     return;
-}
-
-int main()
-{
-    playlistControl ctl;
-    ctl.refresh();
-    return 0;
 }
