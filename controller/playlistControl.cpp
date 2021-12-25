@@ -35,7 +35,7 @@ void playlistControl::promotListOpt()
     cout << "================================" << endl;
     cout << "1. Back to main Menu" << endl;
     cout << "2. Add a new list" << endl;
-    cout << "3. Modify a list" << endl;
+    cout << "3. view and modify a list" << endl;
     cout << "4. Remove a list" << endl;
     int i;
     cin >> i;
@@ -112,6 +112,8 @@ void playlistControl::addMusic(playlist &ls)
     music newMusic(musicName, musicAlbum, musicAuthor, "");
     ls.append(newMusic);
 
+    storage.syncPlaylist(ls);
+
     cout << "Add Music Success" << endl;
     addMusic(ls);
 }
@@ -131,6 +133,8 @@ void playlistControl::removeMusic(playlist &ls)
     }
 
     ls.pop(musicName);
+
+    storage.syncPlaylist(ls);
 
     cout << "Del Music Success" << endl;
     removeMusic(ls);
@@ -160,12 +164,12 @@ void playlistControl::promotDeleteGuide()
 void playlistControl::promotlistManager()
 {
     system("clear");
-    cout << "Select the list to manage" << endl;
+    cout << "Select the list to view and manage" << endl;
     cout << "================================" << endl;
     refresh();
     printAllLists();
     cout << "================================" << endl;
-    cout << "Input the list to manage" << endl;
+    cout << "Input the list to view and manage" << endl;
     int a;
     cin >> a;
     ManageList(allLists[a]);
@@ -179,7 +183,7 @@ void playlistControl::ManageList(playlist &ls)
     cout << "================================" << endl;
     printAllMusics(ls);
     cout << "================================" << endl;
-    cout << "1 to del, 2 to add" << endl;
+    cout << "1 to del, 2 to add, 3 to cancel" << endl;
     int a;
     cin >> a;
     switch (a)
@@ -194,9 +198,14 @@ void playlistControl::ManageList(playlist &ls)
         addMusic(ls);
         break;
     }
+    case 3:
+    {
+        break;
+    }
     default:
     {
         cout << "Input error" << endl;
+        break;
     }
     }
     storage.syncPlaylist(ls);

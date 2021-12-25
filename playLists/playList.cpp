@@ -107,12 +107,13 @@ void playlist::setListName(string a)
 
 bool playlist::pop(string music_name)
 {
-    for (int i = 0; i < totalMusicNum; i++)
+    int j =length();
+    for (int i = 0; i < j; i++)
     {
         if (musiclist[i].getTitle() == music_name)
         {
             musiclist.erase(musiclist.begin() + i);
-            totalMusicNum--;
+            j--;
             return true;
         }
     }

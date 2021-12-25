@@ -2,16 +2,37 @@
 	"nowPlayinglist":	[{
 			"Title":	"Enchantress",
 			"Album":	"Vanquish",
+			"path":	"",
 			"Author":	"Thomas Bergersen"
 		}, {
 			"Title":	"Vanquish",
 			"Album":	"Vanquish",
+			"path":	"",
 			"Author":	"Thomas Bergersen"
+		}, {
+			"Title":	"Unleashed",
+			"Album":	"Thomas",
+			"path":	"",
+			"Author":	"Unleashed"
 		}],
-	"MyFav":	[{
-		}],
+	"MyFav":	[],
 	"lalala":	[],
 	"laa":	[{
+			"Title":	"la",
+			"Album":	"la",
+			"path":	"",
+			"Author":	"la"
+		}, {
+			"Title":	"la1",
+			"Album":	"la",
+			"path":	"",
+			"Author":	"la"
+		}, {
+			"Title":	"la12",
+			"Album":	"la",
+			"path":	"",
+			"Author":	"la"
+		}, {
 			"Title":	"la",
 			"Album":	"la",
 			"path":	"",
@@ -37,5 +58,161 @@
 			"Album":	"lalala",
 			"path":	"",
 			"Author":	"good2"
+		}, {
+			"Title":	"good1",
+			"Album":	"lalala",
+			"path":	"",
+			"Author":	"good1"
+		}, {
+			"Title":	"good2",
+			"Album":	"lalala",
+			"path":	"",
+			"Author":	"good2"
+		}],
+	"BrandNew2":	[{
+			"Title":	"la1",
+			"Album":	"la1",
+			"path":	"",
+			"Author":	"la1"
+		}, {
+			"Title":	"la2",
+			"Album":	"la2",
+			"path":	"",
+			"Author":	"la2"
+		}, {
+			"Title":	"la3",
+			"Album":	"la3",
+			"path":	"",
+			"Author":	"la3"
+		}, {
+			"Title":	"la2",
+			"Album":	"la2",
+			"path":	"",
+			"Author":	"la2"
+		}, {
+			"Title":	"la3",
+			"Album":	"la3",
+			"path":	"",
+			"Author":	"la3"
+		}, {
+			"Title":	"la2",
+			"Album":	"la2",
+			"path":	"",
+			"Author":	"la2"
+		}, {
+			"Title":	"la3",
+			"Album":	"la3",
+			"path":	"",
+			"Author":	"la3"
+		}, {
+			"Title":	"la1",
+			"Album":	"la1",
+			"path":	"",
+			"Author":	"la1"
+		}, {
+			"Title":	"la2",
+			"Album":	"la2",
+			"path":	"",
+			"Author":	"la2"
+		}, {
+			"Title":	"la3",
+			"Album":	"la3",
+			"path":	"",
+			"Author":	"la3"
+		}, {
+			"Title":	"la2",
+			"Album":	"la2",
+			"path":	"",
+			"Author":	"la2"
+		}, {
+			"Title":	"la3",
+			"Album":	"la3",
+			"path":	"",
+			"Author":	"la3"
+		}, {
+			"Title":	"la2",
+			"Album":	"la2",
+			"path":	"",
+			"Author":	"la2"
+		}, {
+			"Title":	"la3",
+			"Album":	"la3",
+			"path":	"",
+			"Author":	"la3"
+		}, {
+			"Title":	"la1",
+			"Album":	"la1",
+			"path":	"",
+			"Author":	"la1"
+		}, {
+			"Title":	"la2",
+			"Album":	"la2",
+			"path":	"",
+			"Author":	"la2"
+		}, {
+			"Title":	"la3",
+			"Album":	"la3",
+			"path":	"",
+			"Author":	"la3"
+		}, {
+			"Title":	"la1",
+			"Album":	"la1",
+			"path":	"",
+			"Author":	"la1"
+		}, {
+			"Title":	"la2",
+			"Album":	"la2",
+			"path":	"",
+			"Author":	"la2"
+		}, {
+			"Title":	"la3",
+			"Album":	"la3",
+			"path":	"",
+			"Author":	"la3"
+		}, {
+			"Title":	"la4",
+			"Album":	"la4",
+			"path":	"",
+			"Author":	"la4"
+		}, {
+			"Title":	"la1",
+			"Album":	"la1",
+			"path":	"",
+			"Author":	"la1"
+		}, {
+			"Title":	"la2",
+			"Album":	"la2",
+			"path":	"",
+			"Author":	"la2"
+		}, {
+			"Title":	"la3",
+			"Album":	"la3",
+			"path":	"",
+			"Author":	"la3"
+		}, {
+			"Title":	"la4",
+			"Album":	"la4",
+			"path":	"",
+			"Author":	"la4"
+		}, {
+			"Title":	"la1",
+			"Album":	"la1",
+			"path":	"",
+			"Author":	"la1"
+		}, {
+			"Title":	"la2",
+			"Album":	"la2",
+			"path":	"",
+			"Author":	"la2"
+		}, {
+			"Title":	"la3",
+			"Album":	"la3",
+			"path":	"",
+			"Author":	"la3"
+		}, {
+			"Title":	"la4",
+			"Album":	"la4",
+			"path":	"",
+			"Author":	"la4"
 		}]
 }
