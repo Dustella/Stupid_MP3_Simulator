@@ -14,11 +14,23 @@
 
 【参考 播放器 B 类图.pdf 画一下】
 
+其中：playList 将vector\<music\>作为playList类中的数据成员存放数据；playList派生出了nowPlayinglist,添加正在播放曲目的索引；
+
+playListControl需要控制所有的播放列表，因此添加数据成员store来实现部分数据绑定，同时添加若干与用户交互的函数进行播放列表操作；而player需要切换下一首、循环方式切换等功能，除了实现相对应的函数，也将一个nowPlayingList对象作为其数据成员进行操作，并使用几个数据成员存储播放状态。
+
+之后，playContrl类作为主菜单，实现了最开始若干与用户交互的函数，有一个store对象存储所有播放列表数据，并且和磁盘上的播放列表瓦全同步。playControl是我们的入口点。
+
 ## 2 系统设计
 
 ### 2.1 系统总体结构
 
 【参考 播放器 B 设计结构.pdf 画一下】
+
+playList派生出了nowPlayinglist,添加正在播放曲目的索引；
+
+playListControl作为各大playList的控制器，实现对不同播放列表的控制，而player作为nowPlayingList的控制器，实现切换下一首、循环方式切换等功能。
+
+之后，playContrl类作为主菜单，实例化两大控制器，并实例化store类实现和磁盘上的播放列表数据绑定。最终，我们主函数只需要实例化playControl即可
 
 ### 2.2 系统文件结构
 
@@ -268,7 +280,27 @@ int main()
 
 由于CJson的问题，需要在Linux下编译运行。
 
-【我会在后期补上，chl找我单独要】
+【图已经补全】
+
+![20211231125713](https://dustella-markdown-imgs.oss-cn-shanghai.aliyuncs.com/images/20211231125713.png)
+
+图 主菜单界面
+
+![20211231125727](https://dustella-markdown-imgs.oss-cn-shanghai.aliyuncs.com/images/20211231125727.png)
+
+图 播放列表控制面板
+
+![20211231125813](https://dustella-markdown-imgs.oss-cn-shanghai.aliyuncs.com/images/20211231125813.png)
+
+图 向新建的播放列表中添加歌曲
+
+![20211231125834](https://dustella-markdown-imgs.oss-cn-shanghai.aliyuncs.com/images/20211231125834.png)
+
+图 播放列表选择界面
+
+![20211231130041](https://dustella-markdown-imgs.oss-cn-shanghai.aliyuncs.com/images/20211231130041.png)
+
+图 播放列表管理歌曲界面
 
 ## 5 总结与体会
 
